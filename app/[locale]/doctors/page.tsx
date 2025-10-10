@@ -3,25 +3,27 @@
 import ServiceCard from "@/components/ServiceCard";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useTranslations } from "next-intl";
 
 export default function DoctorsPage() {
+  const t = useTranslations("DoctorsPage");
   // Dr. Raunak's expertise areas
   const raunakExpertise = [
-    { title: "Rhinoplasty", icon: { src: "/icons/rhinoplasty.png" } },
-    { title: "Skin Surgery", icon: { src: "/icons/skin.svg" } },
-    { title: "Liposuction", icon: { src: "/icons/liposuction.svg" } },
-    { title: "Hair Transplant", icon: { src: "/icons/hairtransplant.svg" } },
-    { title: "Otoplasty", icon: { src: "/icons/otoplasty.svg" } },
-    { title: "Tummy Tuck", icon: { src: "/icons/tummytuck.svg" } },
-    { title: "Peels", icon: { src: "/icons/peels.svg" } },
+    { title: t("drRaunak.rhinoplasty"), icon: { src: "/icons/rhinoplasty.png" } },
+    { title: t("drRaunak.skinSurgery"), icon: { src: "/icons/skin.svg" } },
+    { title: t("drRaunak.liposuction"), icon: { src: "/icons/liposuction.svg" } },
+    { title: t("drRaunak.hairTransplant"), icon: { src: "/icons/hairtransplant.svg" } },
+    { title: t("drRaunak.otoplasty"), icon: { src: "/icons/otoplasty.svg" } },
+    { title: t("drRaunak.tummyTuck"), icon: { src: "/icons/tummytuck.svg" } },
+    { title: t("drRaunak.peels"), icon: { src: "/icons/peels.svg" } },
   ];
 
   // Dr. Kavisha's expertise areas
   const kavishaExpertise = [
-    { title: "Gynecology", icon: { src: "/icons/gynecology.svg" } },
-    { title: "PRP", icon: { src: "/icons/prp.svg" } },
+    { title: t("drKavisha.gynecology"), icon: { src: "/icons/gynecology.svg" } },
+    { title: t("drKavisha.prp"), icon: { src: "/icons/prp.svg" } },
     {
-      title: "Infertility Counselling",
+      title: t("drKavisha.infertilityCounselling"),
       icon: { src: "/icons/infertilitycounselling.svg" },
     },
   ];
@@ -32,10 +34,10 @@ export default function DoctorsPage() {
         <div className="w-full max-w-[1046px] px-3 mx-auto pt-8">
           <TabsList className="grid w-full grid-cols-2 mb-8">
             <TabsTrigger value="raunak" className="text-lg">
-              Dr. Raunak Shinde
+              {t("drRaunak.name")}
             </TabsTrigger>
             <TabsTrigger value="kavisha" className="text-lg">
-              Dr. Kavisha Lambhate
+              {t("drKavisha.name")}
             </TabsTrigger>
           </TabsList>
         </div>
@@ -57,23 +59,18 @@ export default function DoctorsPage() {
                 <div className="flex flex-col gap-[59px] text-[#0c1119] flex-1">
                   <div className="flex flex-col gap-3">
                     <h1 className="font-['Playfair_Display'] font-bold text-[48px] leading-normal">
-                      Dr. Raunak Shinde
+                      {t("drRaunak.name")}
                     </h1>
                     <p className="font-semibold text-[22px] leading-normal">
-                      Board-Certified Plastic and Cosmetic Surgeon with
-                      Expertise in Aesthetic Surgery.
+                      {t("drRaunak.tagline")}
                     </p>
                   </div>
                   <div className="text-[18px] leading-normal">
                     <p className="mb-3">
-                      As the Director of Roop Plastic Surgery Clinique and
-                      Infertility Counselling Centre in Ujjain, Madhya Pradesh,
-                      Dr. Shinde has delivered exceptional plastic surgery
-                      services for over 7 years.
+                      {t("drRaunak.intro1")}
                     </p>
                     <p>
-                      Dr. Shinde has completed prestigious aesthetic fellowships
-                      and reconstructive observerships at renowned centers.
+                      {t("drRaunak.intro2")}
                     </p>
                   </div>
                 </div>
@@ -83,11 +80,10 @@ export default function DoctorsPage() {
               <section className="w-full flex flex-col gap-[51px] items-center">
                 <div className="flex flex-col gap-2 items-center text-center text-[#0c1119] max-w-[642px]">
                   <h2 className="font-['Playfair_Display'] text-[34px] leading-normal">
-                    Expertise in Aesthetic & Cosmetic Surgery
+                    {t("drRaunak.expertiseTitle")}
                   </h2>
                   <p className="text-[18px] leading-normal">
-                    Dr. Raunak Shinde specializes in advanced procedures that
-                    enhance beauty with natural results.
+                    {t("drRaunak.expertiseDescription")}
                   </p>
                 </div>
                 <div className="grid grid-cols-4 gap-[32px] w-full">
@@ -128,12 +124,12 @@ export default function DoctorsPage() {
 
                 <div className="flex flex-col gap-4 items-center text-center text-[#0c1119]">
                   <h3 className="font-['Playfair_Display'] text-[28px] leading-normal">
-                    Advanced Training & Fellowships
+                    {t("drRaunak.trainingTitle")}
                   </h3>
                   <div className="font-semibold text-[16px] leading-normal">
-                    <p className="mb-0">Tamira Plastic Surgery, Chennai</p>
-                    <p className="mb-0">Personiks, Hyderabad</p>
-                    <p>Ganga Hospital, Coimbatore</p>
+                    <p className="mb-0">{t("drRaunak.training1")}</p>
+                    <p className="mb-0">{t("drRaunak.training2")}</p>
+                    <p>{t("drRaunak.training3")}</p>
                   </div>
                 </div>
 
@@ -154,20 +150,18 @@ export default function DoctorsPage() {
               <div className="flex flex-col items-center justify-between h-[720px] w-[400px]">
                 <div className="flex flex-col gap-4 items-center text-center text-[#0c1119]">
                   <h3 className="font-['Playfair_Display'] text-[28px] leading-normal">
-                    Qualifications
+                    {t("drRaunak.qualificationsTitle")}
                   </h3>
                   <ul className="font-semibold text-[16px] leading-normal list-disc list-inside text-left space-y-1.5">
                     <li>
-                      IAAPS Recognised Fellowship in Aesthetic Surgery, Tamira
-                      Plastic Surgery Centre, Chennai
+                      {t("drRaunak.qualification1")}
                     </li>
-                    <li>M.Ch. Plastic Surgery (PGIMER), Chandigarh</li>
+                    <li>{t("drRaunak.qualification2")}</li>
                     <li>
-                      M.S. (Master Of Surgery) General Surgery (IPGMER), Kolkata
+                      {t("drRaunak.qualification3")}
                     </li>
                     <li>
-                      M.B.B.S. Seth G.S. Medical College & King Edward VII
-                      Memorial Hospital, Mumbai
+                      {t("drRaunak.qualification4")}
                     </li>
                   </ul>
                 </div>
@@ -185,13 +179,10 @@ export default function DoctorsPage() {
 
                 <div className="flex flex-col gap-4 items-center text-center text-[#0c1119]">
                   <h3 className="font-['Playfair_Display'] text-[28px] leading-normal">
-                    Personalized Care
+                    {t("drRaunak.personalizedCareTitle")}
                   </h3>
                   <p className="font-semibold text-[16px] leading-normal">
-                    With over 13 years of surgical expertise, Dr. Shinde
-                    combines advanced training with a compassionate approach,
-                    ensuring tailored treatments and natural results for every
-                    patient.
+                    {t("drRaunak.personalizedCareDescription")}
                   </p>
                 </div>
               </div>
@@ -253,20 +244,15 @@ export default function DoctorsPage() {
                 <div className="flex flex-col gap-[59px] text-[#0c1119] flex-1">
                   <div className="flex flex-col gap-3">
                     <h1 className="font-['Playfair_Display'] font-bold text-[48px] leading-normal">
-                      Dr. Kavisha Lambhate
+                      {t("drKavisha.name")}
                     </h1>
                     <p className="font-semibold text-[22px] leading-normal">
-                      Gynecologist and Obstetrician Professional
+                      {t("drKavisha.tagline")}
                     </p>
                   </div>
                   <div className="text-[18px] leading-normal">
                     <p>
-                      I aspire to be a competent and ethical Practitioner and
-                      cultivate expertise in areas specific to the realm of
-                      Infertility. I believe in the continuum of education and
-                      learning while giving my dedicated input and sincere
-                      contribution in the work place as an individual and as
-                      part of the team.
+                      {t("drKavisha.intro")}
                     </p>
                   </div>
                 </div>
@@ -276,11 +262,10 @@ export default function DoctorsPage() {
               <section className="w-full flex flex-col gap-[51px] items-center">
                 <div className="flex flex-col gap-2 items-center text-center text-[#0c1119] max-w-[642px]">
                   <h2 className="font-['Playfair_Display'] text-[34px] leading-normal">
-                    Expertise in Gynecology & Obstetrics
+                    {t("drKavisha.expertiseTitle")}
                   </h2>
                   <p className="text-[18px] leading-normal">
-                    Focused on ethical care and infertility treatment with
-                    compassion and expertise.
+                    {t("drKavisha.expertiseDescription")}
                   </p>
                 </div>
                 <div className="flex justify-center gap-[32px] w-full">
@@ -321,17 +306,16 @@ export default function DoctorsPage() {
 
                 <div className="flex flex-col gap-4 items-center text-center text-[#0c1119]">
                   <h3 className="font-['Playfair_Display'] text-[28px] leading-normal">
-                    Experience
+                    {t("drKavisha.experienceTitle")}
                   </h3>
                   <ul className="font-semibold text-[16px] leading-normal list-disc list-inside text-left space-y-1.5">
-                    <li>Registrar – CK Birla Hospital , CMRI, Kolkata</li>
-                    <li>Senior Resident, PGIMER, Chandigarh</li>
+                    <li>{t("drKavisha.experience1")}</li>
+                    <li>{t("drKavisha.experience2")}</li>
                     <li>
-                      Gynaecologist – National Health Mission, U.T., Chandigarh
+                      {t("drKavisha.experience3")}
                     </li>
                     <li>
-                      Senior Resident – Govt. Medical College & Hospital,
-                      Chandigarh
+                      {t("drKavisha.experience4")}
                     </li>
                   </ul>
                 </div>
@@ -353,25 +337,20 @@ export default function DoctorsPage() {
               <div className="flex flex-col items-center justify-between h-[900px] w-[400px]">
                 <div className="flex flex-col gap-4 items-center text-center text-[#0c1119]">
                   <h3 className="font-['Playfair_Display'] text-[28px] leading-normal">
-                    Qualifications
+                    {t("drKavisha.qualificationsTitle")}
                   </h3>
                   <ul className="font-semibold text-[16px] leading-normal list-disc list-inside text-left space-y-1.5">
                     <li>
-                      MS (Obstetrics & Gynaecology), Mahatma Gandhi Memorial
-                      Medical College, Indore.
+                      {t("drKavisha.qualification1")}
                     </li>
                     <li>
-                      Thesis: Comparative study of induction of labour with
-                      mechanical dilatation vs misoprostol (conducted at MGM
-                      Medical College, Indore).
+                      {t("drKavisha.qualification2")}
                     </li>
                     <li>
-                      MBBS, Mahatma Gandhi Memorial Medical College, Indore.
+                      {t("drKavisha.qualification3")}
                     </li>
                     <li>
-                      Focus: postgraduate specialization in obstetrics &
-                      gynaecology with research experience in labour induction
-                      methods.
+                      {t("drKavisha.qualification4")}
                     </li>
                   </ul>
                 </div>
@@ -389,24 +368,20 @@ export default function DoctorsPage() {
 
                 <div className="flex flex-col gap-4 items-center text-center text-[#0c1119]">
                   <h3 className="font-['Playfair_Display'] text-[28px] leading-normal">
-                    Courses and Fellowships
+                    {t("drKavisha.coursesTitle")}
                   </h3>
                   <ul className="font-semibold text-[16px] leading-normal list-disc list-inside text-left space-y-1.5">
                     <li>
-                      Fellowship in Infertility - Diploma in Clinical ART –
-                      Amity University & Indian Fertility Society- At Wing's
-                      Hospital, Ahmedabad
+                      {t("drKavisha.course1")}
                     </li>
                     <li>
-                      Laparoscopy Training, Marigold Women's Hospital, Ahmedabad
+                      {t("drKavisha.course2")}
                     </li>
                     <li>
-                      FOGSI Ultrasound Training Programme, Rajni Fetal Medicine
-                      Center, Ahmedabad
+                      {t("drKavisha.course3")}
                     </li>
                     <li>
-                      Training Course in Infertility, Institute of Reproductive
-                      Medicine, Kolkata
+                      {t("drKavisha.course4")}
                     </li>
                   </ul>
                 </div>

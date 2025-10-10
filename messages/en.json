@@ -1,0 +1,309 @@
+{
+  "HomePage": {
+    "hero": {
+      "title": "Discover <highlight>expert care</highlight> to enhance your natural beauty and restore confidence.",
+      "description": "Personalized treatments in cosmetic surgery, skin, and hair restoration, focused on advanced techniques, safety, and natural-looking results.",
+      "consultButton": "Consult Now",
+      "exploreButton": "Explore Services"
+    },
+    "services": {
+      "title": "What We Offer",
+      "description": "Advanced procedures in cosmetic surgery, skin rejuvenation, and hair restoration, all under one roof.",
+      "viewAll": "View all →",
+      "rhinoplasty": {
+        "title": "Rhinoplasty",
+        "description": "Reshapes nose structure to improve appearance and breathing function."
+      },
+      "cosmetology": {
+        "title": "Cosmetology",
+        "description": "Treatments to improve skin health, brightness, and overall youthful appearance."
+      },
+      "gynecology": {
+        "title": "Gynecology",
+        "description": "Enhances intimate aesthetics and comfort through safe, minimally invasive procedures."
+      },
+      "liposuction": {
+        "title": "Liposuction",
+        "description": "Removes stubborn fat deposits to sculpt and contour body shape."
+      }
+    },
+    "redefining": {
+      "title": "Redefining Beauty, Restoring <highlight>Confidence</highlight>",
+      "description": "At Roop, we combine artistry and advanced medical expertise to help you achieve results that look natural, feel authentic, and enhance your true self.",
+      "consultButton": "Consult Now"
+    },
+    "specialists": {
+      "title": "Meet Our Specialists",
+      "description": "Experienced professionals dedicated to your care and well-being.",
+      "drRaunak": {
+        "name": "Dr. Raunak Shinde",
+        "description": "Board-Certified Plastic and Cosmetic Surgeon with Expertise in Aesthetic Surgery.",
+        "button": "Know more"
+      },
+      "drKavisha": {
+        "name": "Dr. Kavisha Lambhate",
+        "description": "Gynecologist and Obstetrician Professional",
+        "button": "Know more"
+      }
+    }
+  },
+  "DoctorsPage": {
+    "drRaunak": {
+      "name": "Dr. Raunak Shinde",
+      "tagline": "Board-Certified Plastic and Cosmetic Surgeon with Expertise in Aesthetic Surgery.",
+      "intro1": "As the Director of Roop Plastic Surgery Clinique and Infertility Counselling Centre in Ujjain, Madhya Pradesh, Dr. Shinde has delivered exceptional plastic surgery services for over 7 years.",
+      "intro2": "Dr. Shinde has completed prestigious aesthetic fellowships and reconstructive observerships at renowned centers.",
+      "expertiseTitle": "Expertise in Aesthetic & Cosmetic Surgery",
+      "expertiseDescription": "Dr. Raunak Shinde specializes in advanced procedures that enhance beauty with natural results.",
+      "rhinoplasty": "Rhinoplasty",
+      "skinSurgery": "Skin Surgery",
+      "liposuction": "Liposuction",
+      "hairTransplant": "Hair Transplant",
+      "otoplasty": "Otoplasty",
+      "tummyTuck": "Tummy Tuck",
+      "peels": "Peels",
+      "trainingTitle": "Advanced Training & Fellowships",
+      "training1": "Tamira Plastic Surgery, Chennai",
+      "training2": "Personiks, Hyderabad",
+      "training3": "Ganga Hospital, Coimbatore",
+      "qualificationsTitle": "Qualifications",
+      "qualification1": "IAAPS Recognised Fellowship in Aesthetic Surgery, Tamira Plastic Surgery Centre, Chennai",
+      "qualification2": "M.Ch. Plastic Surgery (PGIMER), Chandigarh",
+      "qualification3": "M.S. (Master Of Surgery) General Surgery (IPGMER), Kolkata",
+      "qualification4": "M.B.B.S. Seth G.S. Medical College & King Edward VII Memorial Hospital, Mumbai",
+      "personalizedCareTitle": "Personalized Care",
+      "personalizedCareDescription": "With over 13 years of surgical expertise, Dr. Shinde combines advanced training with a compassionate approach, ensuring tailored treatments and natural results for every patient."
+    },
+    "drKavisha": {
+      "name": "Dr. Kavisha Lambhate",
+      "tagline": "Gynecologist and Obstetrician Professional",
+      "intro": "I aspire to be a competent and ethical Practitioner and cultivate expertise in areas specific to the realm of Infertility. I believe in the continuum of education and learning while giving my dedicated input and sincere contribution in the work place as an individual and as part of the team.",
+      "expertiseTitle": "Expertise in Gynecology & Obstetrics",
+      "expertiseDescription": "Focused on ethical care and infertility treatment with compassion and expertise.",
+      "gynecology": "Gynecology",
+      "prp": "PRP",
+      "infertilityCounselling": "Infertility Counselling",
+      "experienceTitle": "Experience",
+      "experience1": "Registrar – CK Birla Hospital , CMRI, Kolkata",
+      "experience2": "Senior Resident, PGIMER, Chandigarh",
+      "experience3": "Gynaecologist – National Health Mission, U.T., Chandigarh",
+      "experience4": "Senior Resident – Govt. Medical College & Hospital, Chandigarh",
+      "qualificationsTitle": "Qualifications",
+      "qualification1": "MS (Obstetrics & Gynaecology), Mahatma Gandhi Memorial Medical College, Indore.",
+      "qualification2": "Thesis: Comparative study of induction of labour with mechanical dilatation vs misoprostol (conducted at MGM Medical College, Indore).",
+      "qualification3": "MBBS, Mahatma Gandhi Memorial Medical College, Indore.",
+      "qualification4": "Focus: postgraduate specialization in obstetrics & gynaecology with research experience in labour induction methods.",
+      "coursesTitle": "Courses and Fellowships",
+      "course1": "Fellowship in Infertility - Diploma in Clinical ART – Amity University & Indian Fertility Society- At Wing's Hospital, Ahmedabad",
+      "course2": "Laparoscopy Training, Marigold Women's Hospital, Ahmedabad",
+      "course3": "FOGSI Ultrasound Training Programme, Rajni Fetal Medicine Center, Ahmedabad",
+      "course4": "Training Course in Infertility, Institute of Reproductive Medicine, Kolkata"
+    }
+  },
+  "GalleryPage": {
+    "banner": {
+      "title": "Gallery",
+      "description": "A glimpse into our clinic, our team, and patient transformations."
+    },
+    "carousel": {
+      "title": "Clinic Glimpses",
+      "description": "Modern facilities and calming spaces built for your well-being."
+    },
+    "imageAlt": {
+      "gallery1": "Gallery 1",
+      "gallery2": "Gallery 2",
+      "gallery3": "Gallery 3",
+      "gallery4": "Gallery 4",
+      "gallery5": "Gallery 5",
+      "gallery6": "Gallery 6",
+      "gallery7": "Gallery 7",
+      "clinicInterior": "Clinic interior"
+    }
+  },
+  "ContactPage": {
+    "banner": {
+      "title": "Contact Us",
+      "description": "Schedule an appointment with our specialists today.",
+      "bookButton": "Book Appointment"
+    },
+    "telephoneSupport": {
+      "title": "Telephone Support",
+      "phone": "7024411704 | 0734-3506016",
+      "availability": "Available on call: Mon – Sat, 9:00 AM – 7:00 PM"
+    },
+    "emailAssistance": {
+      "title": "Email Assistance",
+      "email": "roopclinique3@gmail.com",
+      "description": "Write to us anytime"
+    },
+    "stayInTouch": {
+      "title": "Stay in touch, hassle free",
+      "description": "Reach us easily via call, email, or Instagram — we're here to help you anytime.",
+      "address": "3 Phulwani Plaza, Opposite Iskcon Temple 286, Mahashweta Nagar, Ujjain MP",
+      "phone": "7024411704 | 0734-3506016",
+      "email": "roopclinique3@gmail.com",
+      "instagram": "@roop_cosmetic_surgery_clinic"
+    }
+  },
+  "ServicesPage": {
+    "banner": {
+      "title": "Our Services",
+      "description": "Specialized Expertise in Aesthetic and Reconstructive Procedures.",
+      "bookButton": "Book Appointment"
+    },
+    "aestheticTreatments": {
+      "title": "Aesthetic Treatments",
+      "viewAll": "View all →",
+      "skin": {
+        "title": "Skin",
+        "description": "Advanced skin treatments to rejuvenate, brighten, and restore youthful radiance."
+      },
+      "hairLoss": {
+        "title": "Hair Loss",
+        "description": "Effective solutions to control hair loss and promote healthy regrowth."
+      },
+      "face": {
+        "title": "Face",
+        "description": "Specialized procedures to refine features and enhance natural facial beauty."
+      },
+      "weightLoss": {
+        "title": "Weight loss",
+        "description": "Safe methods to reduce excess fat and achieve healthy body balance naturally."
+      },
+      "maleBreast": {
+        "title": "Male Breast",
+        "description": "Treatments to correct enlarged male breasts and restore chest shape."
+      },
+      "abdomen": {
+        "title": "Abdomen",
+        "description": "Procedures to flatten, tone, and contour the abdominal area effectively."
+      },
+      "infertilityCounselling": {
+        "title": "Infertility Counselling",
+        "description": "Supportive guidance for couples with fertility concerns."
+      }
+    },
+    "nonSurgical": {
+      "title": "Non Surgical",
+      "viewAll": "View all →",
+      "gynecology": {
+        "title": "Gynecology",
+        "description": "Enhances intimate aesthetics and comfort through safe, minimally invasive procedures."
+      },
+      "cosmetology": {
+        "title": "Cosmetology",
+        "description": "Treatments to improve skin health, brightness, and overall youthful appearance."
+      },
+      "microneedling": {
+        "title": "Microneedling",
+        "description": "Stimulates collagen production for smoother, firmer, and youthful-looking skin."
+      },
+      "prp": {
+        "title": "PRP",
+        "description": "Uses patient's plasma to restore skin glow and promote hair regrowth."
+      },
+      "peels": {
+        "title": "Peels",
+        "description": "Removes damaged layers to reveal fresher, brighter, healthier skin."
+      },
+      "botox": {
+        "title": "Botox for Wrinkles",
+        "description": "Smooths fine lines and wrinkles for youthful, natural facial appearance."
+      },
+      "threads": {
+        "title": "Threads for Facelift",
+        "description": "Lifts sagging skin, enhancing firmness and natural facial contours."
+      },
+      "faceRejuvenation": {
+        "title": "Face Rejuvenation",
+        "description": "Comprehensive treatments to refresh, restore, and revitalize facial skin."
+      }
+    },
+    "surgical": {
+      "title": "Surgical",
+      "viewAll": "View all →",
+      "hairTransplant": {
+        "title": "Hair Transplant",
+        "description": "Restores natural hair growth by transplanting healthy follicles to thinning areas."
+      },
+      "liposuction": {
+        "title": "Liposuction",
+        "description": "Removes stubborn fat deposits to sculpt and contour body shape."
+      },
+      "fatGrafting": {
+        "title": "Fat Grafting",
+        "description": "Transfers body fat to enhance volume and improve facial features."
+      },
+      "tummyTuck": {
+        "title": "Tummy Tuck",
+        "description": "Tightens abdominal muscles and removes excess skin for flatter stomach."
+      },
+      "gynecomastia": {
+        "title": "Gynecomastia",
+        "description": "Corrects enlarged male breasts for a firm, masculine chest."
+      },
+      "rhinoplasty": {
+        "title": "Rhinoplasty",
+        "description": "Reshapes nose structure to improve appearance and breathing function."
+      },
+      "otoplasty": {
+        "title": "Otoplasty",
+        "description": "Corrects ear shape or protrusion for natural, balanced appearance."
+      }
+    },
+    "laserTreatments": {
+      "title": "Laser Treatments",
+      "viewAll": "View all →",
+      "mnrfCelina": {
+        "title": "MNRF Celina",
+        "description": "Advanced radiofrequency microneedling for tighter, smoother, youthful-looking skin."
+      },
+      "tattooRemoval": {
+        "title": "Tattoo removal",
+        "description": "Safely fades or erases unwanted tattoos with advanced laser technology."
+      },
+      "laserHairReduction": {
+        "title": "Laser hair reduction",
+        "description": "Long-lasting solution to reduce unwanted hair and smooth skin."
+      },
+      "hifu": {
+        "title": "HIFU",
+        "description": "Non-invasive ultrasound treatment to tighten skin and improve facial contours."
+      },
+      "hydrafacial": {
+        "title": "Hydrafacial",
+        "description": "Deep cleansing facial that hydrates, exfoliates, and restores radiant glow."
+      }
+    }
+  },
+  "Navigation": {
+    "home": "Home",
+    "services": "Services",
+    "doctors": "Doctors",
+    "gallery": "Gallery",
+    "contact": "Contact Us"
+  },
+  "Footer": {
+    "quickNavigation": {
+      "title": "Quick Navigation",
+      "home": "Home",
+      "services": "Services",
+      "doctors": "Doctors",
+      "contact": "Contact Us",
+      "booking": "Appointment Booking"
+    },
+    "legal": {
+      "title": "Legal & Policy",
+      "privacy": "Privacy Policy",
+      "terms": "Terms & Conditions",
+      "disclaimer": "Disclaimer"
+    },
+    "contactUs": {
+      "title": "Contact Us",
+      "address": "3 Phulwani Plaza, Opposite Iskcon Temple 286, Mahashweta Nagar, Ujjain MP",
+      "phone": "7024411704 | 0734-3506016",
+      "email": "roopclinique3@gmail.com",
+      "instagram": "@roop_cosmetic_surgery_clinic"
+    }
+  }
+}

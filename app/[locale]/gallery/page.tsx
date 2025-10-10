@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import {
   Carousel,
@@ -6,18 +7,20 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useTranslations } from "next-intl";
 
 export default function GalleryPage() {
+  const t = useTranslations("GalleryPage");
   // Gallery images for carousel
   const clinicImages = [
-    { src: "/gallery/gallery1.png", alt: "Clinic interior 1" },
-    { src: "/gallery/gallery2.png", alt: "Clinic interior 2" },
-    { src: "/gallery/gallery3.png", alt: "Clinic interior 3" },
-    { src: "/gallery/gallery4.png", alt: "Clinic interior 4" },
-    { src: "/gallery/gallery5.png", alt: "Clinic interior 5" },
-    { src: "/gallery/gallery6.png", alt: "Clinic interior 6" },
-    { src: "/gallery/gallery7.png", alt: "Clinic interior 7" },
-    { src: "/gallery/gallery8.png", alt: "Clinic interior 8" },
+    { src: "/gallery/gallery1.png", alt: `${t("imageAlt.clinicInterior")} 1` },
+    { src: "/gallery/gallery2.png", alt: `${t("imageAlt.clinicInterior")} 2` },
+    { src: "/gallery/gallery3.png", alt: `${t("imageAlt.clinicInterior")} 3` },
+    { src: "/gallery/gallery4.png", alt: `${t("imageAlt.clinicInterior")} 4` },
+    { src: "/gallery/gallery5.png", alt: `${t("imageAlt.clinicInterior")} 5` },
+    { src: "/gallery/gallery6.png", alt: `${t("imageAlt.clinicInterior")} 6` },
+    { src: "/gallery/gallery7.png", alt: `${t("imageAlt.clinicInterior")} 7` },
+    { src: "/gallery/gallery8.png", alt: `${t("imageAlt.clinicInterior")} 8` },
   ];
 
   return (
@@ -42,11 +45,10 @@ export default function GalleryPage() {
           <div className="absolute inset-0 p-8 flex items-end">
             <div className="flex flex-col gap-2">
               <h1 className="font-['Playfair_Display'] font-bold text-[48px] text-white leading-tight">
-                Gallery
+                {t("banner.title")}
               </h1>
               <p className="text-white text-[22px]">
-                A glimpse into our clinic, our team, and patient
-                transformations.
+                {t("banner.description")}
               </p>
             </div>
           </div>
@@ -60,7 +62,7 @@ export default function GalleryPage() {
           <div className="col-span-4 row-span-3 relative rounded-[18px] overflow-hidden">
             <Image
               src="/gallery/gallery1.png"
-              alt="Gallery 1"
+              alt={t("imageAlt.gallery1")}
               fill
               className="object-cover"
             />
@@ -70,7 +72,7 @@ export default function GalleryPage() {
           <div className="col-span-2 row-span-3 relative rounded-[18px] overflow-hidden">
             <Image
               src="/gallery/gallery2.png"
-              alt="Gallery 2"
+              alt={t("imageAlt.gallery2")}
               fill
               className="object-cover"
             />
@@ -80,7 +82,7 @@ export default function GalleryPage() {
           <div className="col-span-3 row-span-3 relative rounded-[18px] overflow-hidden">
             <Image
               src="/gallery/gallery3.png"
-              alt="Gallery 3"
+              alt={t("imageAlt.gallery3")}
               fill
               className="object-cover"
             />
@@ -90,7 +92,7 @@ export default function GalleryPage() {
           <div className="col-span-3 row-span-3 relative rounded-[18px] overflow-hidden">
             <Image
               src="/gallery/gallery4.png"
-              alt="Gallery 4"
+              alt={t("imageAlt.gallery4")}
               fill
               className="object-cover"
             />
@@ -100,7 +102,7 @@ export default function GalleryPage() {
           <div className="col-span-2 row-span-4 relative rounded-[18px] overflow-hidden">
             <Image
               src="/gallery/gallery5.png"
-              alt="Gallery 5"
+              alt={t("imageAlt.gallery5")}
               fill
               className="object-cover"
             />
@@ -110,7 +112,7 @@ export default function GalleryPage() {
           <div className="col-span-2 row-span-4 relative rounded-[18px] overflow-hidden">
             <Image
               src="/gallery/gallery6.png"
-              alt="Gallery 6"
+              alt={t("imageAlt.gallery6")}
               fill
               className="object-cover"
             />
@@ -120,7 +122,7 @@ export default function GalleryPage() {
           <div className="col-span-2 row-span-4 relative rounded-[18px] overflow-hidden">
             <Image
               src="/gallery/gallery7.png"
-              alt="Gallery 7"
+              alt={t("imageAlt.gallery7")}
               fill
               className="object-cover"
             />
@@ -134,10 +136,10 @@ export default function GalleryPage() {
           {/* Header */}
           <div className="flex flex-col gap-2 items-center text-center text-[#0c1119]">
             <h2 className="font-['Playfair_Display'] font-bold text-[34px] leading-normal">
-              Clinic Glimpses
+              {t("carousel.title")}
             </h2>
             <p className="text-[22px] leading-normal">
-              Modern facilities and calming spaces built for your well-being.
+              {t("carousel.description")}
             </p>
           </div>
 

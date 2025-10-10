@@ -2,19 +2,27 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+/* Fix shadcn Carousel clipping issue */
+.embla__container {
+  overflow: visible !important;
+}
+.embla {
+  overflow: visible !important;
+}
 
 @theme inline {
   /* Font families */
-  --font-sans: var(--font-open-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: var(--font-open-sans), system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: var(--font-playfair), Georgia, serif;
 
   /* Custom colors */
-  --color-roop-primary: #0074B7;
-  --color-roop-dark: #0C1119;
-  --color-roop-bg: #F5F7F8;
-  --color-roop-secondary: #E0F0F5;
-  --color-roop-card: #D5EDFD;
-  --color-roop-accent: #F6DE84;
+  --color-roop-primary: #0074b7;
+  --color-roop-dark: #0c1119;
+  --color-roop-bg: #f5f7f8;
+  --color-roop-secondary: #e0f0f5;
+  --color-roop-card: #d5edfd;
+  --color-roop-accent: #f6de84;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -52,30 +60,37 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-html, body {
+html,
+body {
   height: 100%;
   overflow-x: hidden; /* Hide horizontal scrollbar globally */
 }
 
 body {
-  background: #F5F7F8;
-  color: #0C1119;
-  font-family: var(--font-open-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f7f8;
+  color: #0c1119;
+  font-family: var(--font-open-sans), system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* Apply Playfair Display to all headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-playfair), Georgia, serif;
 }
 
 /* Hide scrollbars but keep functionality */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari and Opera */
+  display: none; /* Chrome, Safari and Opera */
 }
 
 :root {

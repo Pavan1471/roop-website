@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Instagram } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function ContactPage() {
+  const t = useTranslations("ContactPage");
   return (
     <div className="bg-[#f5f7f8] flex flex-col items-center gap-20 pb-16">
       {/* Contact Banner */}
@@ -24,14 +27,14 @@ export default function ContactPage() {
           <div className="absolute inset-0 p-8 flex items-end justify-between">
             <div className="flex flex-col gap-2">
               <h1 className="font-['Playfair_Display'] font-bold text-[48px] text-white leading-tight">
-                Contact Us
+                {t("banner.title")}
               </h1>
               <p className="text-white text-[22px]">
-                Schedule an appointment with our specialists today.
+                {t("banner.description")}
               </p>
             </div>
             <button className="bg-[#F6DE84] text-[#0C1119] rounded-[18px] h-[45px] px-8 text-[18px] font-bold">
-              Book Appointment
+              {t("banner.bookButton")}
             </button>
           </div>
         </div>
@@ -42,7 +45,7 @@ export default function ContactPage() {
         {/* Telephone Support */}
         <div className="flex-1 flex flex-col gap-10 items-center">
           <h2 className="font-['Playfair_Display'] text-[34px] leading-normal text-[#0c1119] text-center">
-            Telephone Support
+            {t("telephoneSupport.title")}
           </h2>
           <div className="flex flex-col gap-4 items-center w-full">
             <div className="flex gap-5 items-center">
@@ -50,11 +53,11 @@ export default function ContactPage() {
                 <Phone className="w-6 h-6 text-[#0c1119]" />
               </div>
               <p className="font-semibold text-[22px] text-[#0c1119]">
-                7024411704 | 0734-3506016
+                {t("telephoneSupport.phone")}
               </p>
             </div>
             <p className="font-light text-[16px] text-[#0c1119] text-center">
-              Available on call: Mon – Sat, 9:00 AM – 7:00 PM
+              {t("telephoneSupport.availability")}
             </p>
           </div>
         </div>
@@ -65,7 +68,7 @@ export default function ContactPage() {
         {/* Email Assistance */}
         <div className="flex-1 flex flex-col gap-10 items-center">
           <h2 className="font-['Playfair_Display'] text-[34px] leading-normal text-[#0c1119] text-center">
-            Email Assistance
+            {t("emailAssistance.title")}
           </h2>
           <div className="flex flex-col gap-4 items-center w-full">
             <div className="flex gap-5 items-center">
@@ -73,11 +76,11 @@ export default function ContactPage() {
                 <Mail className="w-6 h-6 text-[#0c1119]" />
               </div>
               <p className="font-semibold text-[22px] text-[#0c1119]">
-                roopclinique3@gmail.com
+                {t("emailAssistance.email")}
               </p>
             </div>
             <p className="font-light text-[16px] text-[#0c1119] text-center">
-              Write to us anytime
+              {t("emailAssistance.description")}
             </p>
           </div>
         </div>
@@ -102,11 +105,10 @@ export default function ContactPage() {
         {/* Content */}
         <div className="flex flex-col gap-7 flex-1">
           <h2 className="font-['Playfair_Display'] text-[48px] leading-tight text-[#0c1119]">
-            Stay in touch, hassle free
+            {t("stayInTouch.title")}
           </h2>
           <p className="text-[18px] text-[#0c1119] leading-normal">
-            Reach us easily via call, email, or Instagram — we're here to help
-            you anytime.
+            {t("stayInTouch.description")}
           </p>
           <div className="flex flex-col gap-3">
             <div className="flex gap-5 items-start">
@@ -114,8 +116,7 @@ export default function ContactPage() {
                 <MapPin className="w-5 h-5 text-[#0c1119]" />
               </div>
               <p className="text-[18px] text-[#0c1119] leading-normal flex-1">
-                3 Phulwani Plaza, Opposite Iskcon Temple 286, Mahashweta Nagar,
-                Ujjain MP
+                {t("stayInTouch.address")}
               </p>
             </div>
             <div className="flex gap-5 items-center">
@@ -123,7 +124,7 @@ export default function ContactPage() {
                 <Phone className="w-5 h-5 text-[#0c1119]" />
               </div>
               <p className="text-[18px] text-[#0c1119]">
-                7024411704 | 0734-3506016
+                {t("stayInTouch.phone")}
               </p>
             </div>
             <div className="flex gap-5 items-center">
@@ -131,7 +132,7 @@ export default function ContactPage() {
                 <Mail className="w-5 h-5 text-[#0c1119]" />
               </div>
               <p className="text-[18px] text-[#0c1119]">
-                roopclinique3@gmail.com
+                {t("stayInTouch.email")}
               </p>
             </div>
             <div className="flex gap-5 items-center">
@@ -139,7 +140,7 @@ export default function ContactPage() {
                 <Instagram className="w-5 h-5 text-[#0c1119]" />
               </div>
               <p className="text-[18px] text-[#0c1119]">
-                @roop_cosmetic_surgery_clinic
+                {t("stayInTouch.instagram")}
               </p>
             </div>
           </div>
