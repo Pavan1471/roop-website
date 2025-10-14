@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import "../globals.css";
 import Navbar from "../../components/Navbar";
+import Link from "next/link";
 
 // Project fonts to match Figma
 const openSans = Open_Sans({
@@ -56,19 +57,31 @@ export default async function RootLayout({
                     "Quick Navigation"}
                 </h4>
                 <ul className="space-y-1.5 text-[18px]">
-                  <li>{messages.Footer?.quickNavigation?.home || "Home"}</li>
                   <li>
-                    {messages.Footer?.quickNavigation?.services || "Services"}
+                    <Link href={`/${locale}`} className="hover:text-[#0074B7] transition-colors">
+                      {messages.Footer?.quickNavigation?.home || "Home"}
+                    </Link>
                   </li>
                   <li>
-                    {messages.Footer?.quickNavigation?.doctors || "Doctors"}
+                    <Link href={`/${locale}/services`} className="hover:text-[#0074B7] transition-colors">
+                      {messages.Footer?.quickNavigation?.services || "Services"}
+                    </Link>
                   </li>
                   <li>
-                    {messages.Footer?.quickNavigation?.contact || "Contact Us"}
+                    <Link href={`/${locale}/doctors`} className="hover:text-[#0074B7] transition-colors">
+                      {messages.Footer?.quickNavigation?.doctors || "Doctors"}
+                    </Link>
                   </li>
                   <li>
-                    {messages.Footer?.quickNavigation?.booking ||
-                      "Appointment Booking"}
+                    <Link href={`/${locale}/contact`} className="hover:text-[#0074B7] transition-colors">
+                      {messages.Footer?.quickNavigation?.contact || "Contact Us"}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={`/${locale}/contact`} className="hover:text-[#0074B7] transition-colors">
+                      {messages.Footer?.quickNavigation?.booking ||
+                        "Appointment Booking"}
+                    </Link>
                   </li>
                 </ul>
               </div>

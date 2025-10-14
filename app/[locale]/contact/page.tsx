@@ -2,13 +2,87 @@
 import Image from "next/image";
 import { Phone, Mail, MapPin, Instagram } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactPage() {
   const t = useTranslations("ContactPage");
+  
+  // Refs for sections
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const contactMethodsRef = useRef<HTMLDivElement>(null);
+  const stayInTouchRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    // Banner animation - slide up and fade in
+    if (bannerRef.current) {
+      gsap.fromTo(
+        bannerRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: bannerRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+    
+    // Contact methods section - slide up and fade in
+    if (contactMethodsRef.current) {
+      gsap.fromTo(
+        contactMethodsRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: contactMethodsRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+    
+    // Stay in touch section - slide up and fade in
+    if (stayInTouchRef.current) {
+      gsap.fromTo(
+        stayInTouchRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: stayInTouchRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+    
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
   return (
     <div className="bg-[#f5f7f8] flex flex-col items-center gap-20 pb-16">
       {/* Contact Banner */}
-      <section className="relative w-full max-w-[1046px] mx-auto px-3">
+      <section ref={bannerRef} className="relative w-full max-w-[1046px] mx-auto px-3">
         <div className="relative h-[250px] w-full rounded-[18px] overflow-hidden">
           {/* Background image */}
           <div
@@ -33,15 +107,12 @@ export default function ContactPage() {
                 {t("banner.description")}
               </p>
             </div>
-            <button className="bg-[#F6DE84] text-[#0C1119] rounded-[18px] h-[45px] px-8 text-[18px] font-bold">
-              {t("banner.bookButton")}
-            </button>
           </div>
         </div>
       </section>
 
       {/* Telephone Support & Email Assistance */}
-      <section className="w-full max-w-[1046px] mx-auto px-3 flex gap-12 items-start">
+      <section ref={contactMethodsRef} className="w-full max-w-[1046px] mx-auto px-3 flex gap-12 items-start">
         {/* Telephone Support */}
         <div className="flex-1 flex flex-col gap-10 items-center">
           <h2 className="font-['Playfair_Display'] text-[34px] leading-normal text-[#0c1119] text-center">
@@ -87,7 +158,7 @@ export default function ContactPage() {
       </section>
 
       {/* Stay in Touch Section */}
-      <section className="w-full max-w-[1046px] mx-auto px-3 flex gap-12 items-center">
+      <section ref={stayInTouchRef} className="w-full max-w-[1046px] mx-auto px-3 flex gap-12 items-center">
         {/* Image with decorative boxes */}
         <div className="relative flex-shrink-0">
           <div className="absolute bg-[#f6de84] w-[133px] h-[172px] rounded-[22px] top-0 left-0 z-0"></div>

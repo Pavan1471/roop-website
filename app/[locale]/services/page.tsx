@@ -8,9 +8,201 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { useTranslations } from "next-intl";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Services() {
   const t = useTranslations("ServicesPage");
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const aestheticRef = useRef<HTMLDivElement>(null);
+  const aestheticRowRef = useRef<HTMLDivElement>(null);
+  const nonSurgicalRef = useRef<HTMLDivElement>(null);
+  const nonSurgicalRowRef = useRef<HTMLDivElement>(null);
+  const surgicalRef = useRef<HTMLDivElement>(null);
+  const surgicalRowRef = useRef<HTMLDivElement>(null);
+  const laserRef = useRef<HTMLDivElement>(null);
+  const laserRowRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Banner animation - slide up and fade in
+    if (bannerRef.current) {
+      gsap.fromTo(
+        bannerRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: bannerRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Aesthetic section header - slide up and fade in
+    if (aestheticRef.current) {
+      gsap.fromTo(
+        aestheticRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: aestheticRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Aesthetic carousel row - slide in from right and fade in
+    if (aestheticRowRef.current) {
+      gsap.fromTo(
+        aestheticRowRef.current,
+        { opacity: 0, x: 100 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: aestheticRowRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Non-Surgical section header - slide up and fade in
+    if (nonSurgicalRef.current) {
+      gsap.fromTo(
+        nonSurgicalRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: nonSurgicalRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Non-Surgical carousel row - slide in from right and fade in
+    if (nonSurgicalRowRef.current) {
+      gsap.fromTo(
+        nonSurgicalRowRef.current,
+        { opacity: 0, x: 100 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: nonSurgicalRowRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Surgical section header - slide up and fade in
+    if (surgicalRef.current) {
+      gsap.fromTo(
+        surgicalRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: surgicalRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Surgical carousel row - slide in from right and fade in
+    if (surgicalRowRef.current) {
+      gsap.fromTo(
+        surgicalRowRef.current,
+        { opacity: 0, x: 100 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: surgicalRowRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Laser section header - slide up and fade in
+    if (laserRef.current) {
+      gsap.fromTo(
+        laserRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: laserRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Laser carousel row - slide in from right and fade in
+    if (laserRowRef.current) {
+      gsap.fromTo(
+        laserRowRef.current,
+        { opacity: 0, x: 100 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: laserRowRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
   // All services organized by category with descriptions
   const aestheticServices: {
     title: string;
@@ -246,25 +438,27 @@ export default function Services() {
 
   const ScrollableRow = ({
     services,
+    rowRef,
   }: {
     services: {
       title: string;
       icon: ServiceCardIcon;
       description: string;
     }[];
+    rowRef?: React.RefObject<HTMLDivElement>;
   }) => {
     return (
-      <div className="relative w-screen -ml-[50vw] left-[50%]">
+      <div ref={rowRef} className="relative w-full">
         {/* The carousel stays fully visible so tall cards aren't cut */}
         <Carousel opts={{ align: "start", dragFree: true }}>
           <CarouselContent
-            className="ml-0 scrollbar-hide"
+            className="scrollbar-hide"
             style={{ overflow: "visible" }}
           >
-            {services.map((service) => (
+            {services.map((service, index) => (
               <CarouselItem
                 key={service.title}
-                className="pl-[36px] basis-auto"
+                className={`basis-auto ${index === 0 ? "pl-0" : "pl-6"}`}
                 style={{ overflow: "visible" }}
               >
                 <div className="w-[232px]" style={{ overflow: "visible" }}>
@@ -283,9 +477,18 @@ export default function Services() {
   };
 
   return (
-    <div className="flex flex-col gap-20 pb-16">
+    <div className="flex flex-col gap-20 pb-16 relative">
+      {/* White overlay on right side extending to viewport right */}
+      <div
+        className="absolute top-0 h-full pointer-events-none bg-[#F5F7F8]"
+        style={{
+          left: "100%",
+          width: "100vw",
+          zIndex: 10,
+        }}
+      />
       {/* Banner with gradient overlay */}
-      <section className="rounded-2xl overflow-hidden relative">
+      <section ref={bannerRef} className="rounded-2xl overflow-hidden relative">
         <div className="relative h-[200px] md:h-[250px] w-full">
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -323,13 +526,10 @@ export default function Services() {
           paddingBottom: "3rem",
         }}
       >
-        <div className="flex items-center justify-between">
+        <div ref={aestheticRef} className="flex items-center justify-between">
           <h2 className="text-[34px]">{t("aestheticTreatments.title")}</h2>
-          <button className="text-[18px] hover:text-[#0074B7] transition-colors">
-            {t("aestheticTreatments.viewAll")}
-          </button>
         </div>
-        <ScrollableRow services={aestheticServices} />
+        <ScrollableRow services={aestheticServices} rowRef={aestheticRowRef} />
       </section>
 
       {/* Non Surgical */}
@@ -341,13 +541,13 @@ export default function Services() {
           paddingBottom: "3rem",
         }}
       >
-        <div className="flex items-center justify-between">
+        <div ref={nonSurgicalRef} className="flex items-center justify-between">
           <h2 className="text-[34px]">{t("nonSurgical.title")}</h2>
-          <button className="text-[18px] hover:text-[#0074B7] transition-colors">
-            {t("nonSurgical.viewAll")}
-          </button>
         </div>
-        <ScrollableRow services={nonSurgicalServices} />
+        <ScrollableRow
+          services={nonSurgicalServices}
+          rowRef={nonSurgicalRowRef}
+        />
       </section>
 
       {/* Surgical */}
@@ -359,13 +559,10 @@ export default function Services() {
           paddingBottom: "3rem",
         }}
       >
-        <div className="flex items-center justify-between">
+        <div ref={surgicalRef} className="flex items-center justify-between">
           <h2 className="text-[34px]">{t("surgical.title")}</h2>
-          <button className="text-[18px] hover:text-[#0074B7] transition-colors">
-            {t("surgical.viewAll")}
-          </button>
         </div>
-        <ScrollableRow services={surgicalServices} />
+        <ScrollableRow services={surgicalServices} rowRef={surgicalRowRef} />
       </section>
 
       {/* Laser Treatments */}
@@ -377,13 +574,13 @@ export default function Services() {
           paddingBottom: "3rem",
         }}
       >
-        <div className="flex items-center justify-between">
+        <div ref={laserRef} className="flex items-center justify-between">
           <h2 className="text-[34px]">{t("laserTreatments.title")}</h2>
           <button className="text-[18px] hover:text-[#0074B7] transition-colors">
             {t("laserTreatments.viewAll")}
           </button>
         </div>
-        <ScrollableRow services={laserServices} />
+        <ScrollableRow services={laserServices} rowRef={laserRowRef} />
       </section>
     </div>
   );

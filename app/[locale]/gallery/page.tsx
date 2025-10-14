@@ -8,9 +8,126 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useTranslations } from "next-intl";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function GalleryPage() {
   const t = useTranslations("GalleryPage");
+
+  // Refs for sections
+  const bannerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Refs for grid rows
+  const row1Ref = useRef<HTMLDivElement>(null);
+  const row2Ref = useRef<HTMLDivElement>(null);
+  const row3Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Banner animation - slide up and fade in
+    if (bannerRef.current) {
+      gsap.fromTo(
+        bannerRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: bannerRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Row 1 - slide in from left
+    if (row1Ref.current) {
+      gsap.fromTo(
+        row1Ref.current,
+        { opacity: 0, x: -100 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: row1Ref.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Row 2 - slide in from right
+    if (row2Ref.current) {
+      gsap.fromTo(
+        row2Ref.current,
+        { opacity: 0, x: 100 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: row2Ref.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Row 3 - slide in from left
+    if (row3Ref.current) {
+      gsap.fromTo(
+        row3Ref.current,
+        { opacity: 0, x: -100 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: row3Ref.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Carousel section - slide up and fade in
+    if (carouselRef.current) {
+      gsap.fromTo(
+        carouselRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: carouselRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
   // Gallery images for carousel
   const clinicImages = [
     { src: "/gallery/gallery1.png", alt: `${t("imageAlt.clinicInterior")} 1` },
@@ -20,13 +137,15 @@ export default function GalleryPage() {
     { src: "/gallery/gallery5.png", alt: `${t("imageAlt.clinicInterior")} 5` },
     { src: "/gallery/gallery6.png", alt: `${t("imageAlt.clinicInterior")} 6` },
     { src: "/gallery/gallery7.png", alt: `${t("imageAlt.clinicInterior")} 7` },
-    { src: "/gallery/gallery8.png", alt: `${t("imageAlt.clinicInterior")} 8` },
   ];
 
   return (
     <div className="bg-[#f5f7f8] flex flex-col items-center pb-16">
       {/* Gallery Banner */}
-      <section className="rounded-[18px] overflow-hidden relative w-full max-w-[1046px] mx-auto px-3 mb-20">
+      <section
+        ref={bannerRef}
+        className="rounded-[18px] overflow-hidden relative w-full max-w-[1046px] mx-auto px-3 mb-20"
+      >
         <div className="relative h-[250px] w-full">
           {/* Background image */}
           <div
@@ -58,80 +177,101 @@ export default function GalleryPage() {
       {/* Bento Grid Gallery */}
       <section className="w-full max-w-[1046px] mx-auto px-3 mb-20">
         <div className="grid grid-cols-6 grid-rows-8 gap-4 h-[1400px]">
-          {/* Large top-left */}
-          <div className="col-span-4 row-span-3 relative rounded-[18px] overflow-hidden">
-            <Image
-              src="/gallery/gallery1.png"
-              alt={t("imageAlt.gallery1")}
-              fill
-              className="object-cover"
-            />
+          {/* Row 1 - slides from left */}
+          <div
+            ref={row1Ref}
+            className="col-span-6 row-span-3 grid grid-cols-6 gap-4"
+            style={{ gridColumn: "1 / -1", gridRow: "1 / 4" }}
+          >
+            {/* Large top-left */}
+            <div className="col-span-4 row-span-3 relative rounded-[18px] overflow-hidden">
+              <Image
+                src="/gallery/gallery1.png"
+                alt={t("imageAlt.gallery1")}
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Top-right */}
+            <div className="col-span-2 row-span-3 relative rounded-[18px] overflow-hidden">
+              <Image
+                src="/gallery/gallery2.png"
+                alt={t("imageAlt.gallery2")}
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
 
-          {/* Top-right */}
-          <div className="col-span-2 row-span-3 relative rounded-[18px] overflow-hidden">
-            <Image
-              src="/gallery/gallery2.png"
-              alt={t("imageAlt.gallery2")}
-              fill
-              className="object-cover"
-            />
+          {/* Row 2 - slides from right */}
+          <div
+            ref={row2Ref}
+            className="col-span-6 row-span-3 grid grid-cols-6 gap-4"
+            style={{ gridColumn: "1 / -1", gridRow: "4 / 7" }}
+          >
+            {/* Middle-left */}
+            <div className="col-span-3 row-span-3 relative rounded-[18px] overflow-hidden">
+              <Image
+                src="/gallery/gallery3.png"
+                alt={t("imageAlt.gallery3")}
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Middle-right */}
+            <div className="col-span-3 row-span-3 relative rounded-[18px] overflow-hidden">
+              <Image
+                src="/gallery/gallery4.png"
+                alt={t("imageAlt.gallery4")}
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
 
-          {/* Middle-left */}
-          <div className="col-span-3 row-span-3 relative rounded-[18px] overflow-hidden">
-            <Image
-              src="/gallery/gallery3.png"
-              alt={t("imageAlt.gallery3")}
-              fill
-              className="object-cover"
-            />
-          </div>
+          {/* Row 3 - slides from left */}
+          <div
+            ref={row3Ref}
+            className="col-span-6 row-span-2 grid grid-cols-6 gap-4"
+            style={{ gridColumn: "1 / -1", gridRow: "7 / 9" }}
+          >
+            {/* Bottom large left */}
+            <div className="col-span-2 row-span-2 relative rounded-[18px] overflow-hidden">
+              <Image
+                src="/gallery/gallery5.png"
+                alt={t("imageAlt.gallery5")}
+                fill
+                className="object-cover"
+              />
+            </div>
 
-          {/* Middle-right */}
-          <div className="col-span-3 row-span-3 relative rounded-[18px] overflow-hidden">
-            <Image
-              src="/gallery/gallery4.png"
-              alt={t("imageAlt.gallery4")}
-              fill
-              className="object-cover"
-            />
-          </div>
+            {/* Bottom-right tall */}
+            <div className="col-span-2 row-span-2 relative rounded-[18px] overflow-hidden">
+              <Image
+                src="/gallery/gallery6.png"
+                alt={t("imageAlt.gallery6")}
+                fill
+                className="object-cover"
+              />
+            </div>
 
-          {/* Bottom large left */}
-          <div className="col-span-2 row-span-4 relative rounded-[18px] overflow-hidden">
-            <Image
-              src="/gallery/gallery5.png"
-              alt={t("imageAlt.gallery5")}
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          {/* Bottom-right tall */}
-          <div className="col-span-2 row-span-4 relative rounded-[18px] overflow-hidden">
-            <Image
-              src="/gallery/gallery6.png"
-              alt={t("imageAlt.gallery6")}
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          {/* Bottom-right tall 2 */}
-          <div className="col-span-2 row-span-4 relative rounded-[18px] overflow-hidden">
-            <Image
-              src="/gallery/gallery7.png"
-              alt={t("imageAlt.gallery7")}
-              fill
-              className="object-cover"
-            />
+            {/* Bottom-right tall 2 */}
+            <div className="col-span-2 row-span-2 relative rounded-[18px] overflow-hidden">
+              <Image
+                src="/gallery/gallery7.png"
+                alt={t("imageAlt.gallery7")}
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Clinic Glimpses Carousel */}
-      <section className="w-full max-w-[1046px] mx-auto px-3">
+      <section ref={carouselRef} className="w-full max-w-[1046px] mx-auto px-3">
         <div className="flex flex-col gap-16 items-center">
           {/* Header */}
           <div className="flex flex-col gap-2 items-center text-center text-[#0c1119]">

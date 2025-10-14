@@ -4,15 +4,122 @@ import ServiceCard from "@/components/ServiceCard";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function DoctorsPage() {
   const t = useTranslations("DoctorsPage");
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
+  const [activeTab, setActiveTab] = useState<string>(tabParam || "raunak");
+
+  // Refs for Dr. Raunak sections
+  const raunakHeroRef = useRef<HTMLDivElement>(null);
+  const raunakExpertiseRef = useRef<HTMLDivElement>(null);
+  const raunakTimelineRef = useRef<HTMLDivElement>(null);
+  const raunakGalleryRef = useRef<HTMLDivElement>(null);
+  // Timeline parts
+  const raunakTimelineIcon1Ref = useRef<HTMLDivElement>(null);
+  const raunakTimelineTrainingRef = useRef<HTMLDivElement>(null);
+  const raunakTimelineIcon2Ref = useRef<HTMLDivElement>(null);
+  const raunakTimelineQualificationsRef = useRef<HTMLDivElement>(null);
+  const raunakTimelineIcon3Ref = useRef<HTMLDivElement>(null);
+  const raunakTimelineCareRef = useRef<HTMLDivElement>(null);
+
+  // Refs for Dr. Kavisha sections
+  const kavishaHeroRef = useRef<HTMLDivElement>(null);
+  const kavishaExpertiseRef = useRef<HTMLDivElement>(null);
+  const kavishaTimelineRef = useRef<HTMLDivElement>(null);
+  const kavishaGalleryRef = useRef<HTMLDivElement>(null);
+  // Timeline parts
+  const kavishaTimelineIcon1Ref = useRef<HTMLDivElement>(null);
+  const kavishaTimelineExperienceRef = useRef<HTMLDivElement>(null);
+  const kavishaTimelineIcon2Ref = useRef<HTMLDivElement>(null);
+  const kavishaTimelineQualificationsRef = useRef<HTMLDivElement>(null);
+  const kavishaTimelineIcon3Ref = useRef<HTMLDivElement>(null);
+  const kavishaTimelineCoursesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (tabParam) {
+      setActiveTab(tabParam);
+    }
+  }, [tabParam]);
+
+  useEffect(() => {
+    // Animate sections based on active tab
+    const animateSection = (ref: React.RefObject<HTMLElement>) => {
+      if (ref.current) {
+        gsap.fromTo(
+          ref.current,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ref.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    };
+
+    // Small delay to ensure DOM is ready after tab switch
+    const timer = setTimeout(() => {
+      if (activeTab === "raunak") {
+        animateSection(raunakHeroRef);
+        animateSection(raunakExpertiseRef);
+        animateSection(raunakTimelineRef);
+        // Timeline parts
+        animateSection(raunakTimelineIcon1Ref);
+        animateSection(raunakTimelineTrainingRef);
+        animateSection(raunakTimelineIcon2Ref);
+        animateSection(raunakTimelineQualificationsRef);
+        animateSection(raunakTimelineIcon3Ref);
+        animateSection(raunakTimelineCareRef);
+        animateSection(raunakGalleryRef);
+      } else if (activeTab === "kavisha") {
+        animateSection(kavishaHeroRef);
+        animateSection(kavishaExpertiseRef);
+        animateSection(kavishaTimelineRef);
+        // Timeline parts
+        animateSection(kavishaTimelineIcon1Ref);
+        animateSection(kavishaTimelineExperienceRef);
+        animateSection(kavishaTimelineIcon2Ref);
+        animateSection(kavishaTimelineQualificationsRef);
+        animateSection(kavishaTimelineIcon3Ref);
+        animateSection(kavishaTimelineCoursesRef);
+        animateSection(kavishaGalleryRef);
+      }
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, [activeTab]);
   // Dr. Raunak's expertise areas
   const raunakExpertise = [
-    { title: t("drRaunak.rhinoplasty"), icon: { src: "/icons/rhinoplasty.png" } },
+    {
+      title: t("drRaunak.rhinoplasty"),
+      icon: { src: "/icons/rhinoplasty.svg" },
+    },
     { title: t("drRaunak.skinSurgery"), icon: { src: "/icons/skin.svg" } },
-    { title: t("drRaunak.liposuction"), icon: { src: "/icons/liposuction.svg" } },
-    { title: t("drRaunak.hairTransplant"), icon: { src: "/icons/hairtransplant.svg" } },
+    {
+      title: t("drRaunak.liposuction"),
+      icon: { src: "/icons/liposuction.svg" },
+    },
+    {
+      title: t("drRaunak.hairTransplant"),
+      icon: { src: "/icons/hairtransplant.svg" },
+    },
     { title: t("drRaunak.otoplasty"), icon: { src: "/icons/otoplasty.svg" } },
     { title: t("drRaunak.tummyTuck"), icon: { src: "/icons/tummytuck.svg" } },
     { title: t("drRaunak.peels"), icon: { src: "/icons/peels.svg" } },
@@ -20,7 +127,10 @@ export default function DoctorsPage() {
 
   // Dr. Kavisha's expertise areas
   const kavishaExpertise = [
-    { title: t("drKavisha.gynecology"), icon: { src: "/icons/gynecology.svg" } },
+    {
+      title: t("drKavisha.gynecology"),
+      icon: { src: "/icons/gynecology.svg" },
+    },
     { title: t("drKavisha.prp"), icon: { src: "/icons/prp.svg" } },
     {
       title: t("drKavisha.infertilityCounselling"),
@@ -30,7 +140,7 @@ export default function DoctorsPage() {
 
   return (
     <div className="bg-[#f5f7f8] flex flex-col items-center pb-0">
-      <Tabs defaultValue="raunak" className="w-full">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <div className="w-full max-w-[1046px] px-3 mx-auto pt-8">
           <TabsList className="grid w-full grid-cols-2 mb-8">
             <TabsTrigger value="raunak" className="text-lg">
@@ -47,7 +157,10 @@ export default function DoctorsPage() {
           <div className="flex flex-col w-full">
             <div className="flex flex-col gap-20 pb-16 w-full max-w-[1046px] px-3 mx-auto">
               {/* Hero Section */}
-              <section className="bg-[#d5edfd] rounded-[18px] w-full p-[36px] flex items-center gap-[64px]">
+              <section
+                ref={raunakHeroRef}
+                className="bg-[#d5edfd] rounded-[18px] w-full p-[36px] flex items-center gap-[64px]"
+              >
                 <div className="relative w-[286px] h-[376px] rounded-[22px] overflow-hidden flex-shrink-0">
                   <Image
                     src="/gallery/raunak.png"
@@ -66,18 +179,17 @@ export default function DoctorsPage() {
                     </p>
                   </div>
                   <div className="text-[18px] leading-normal">
-                    <p className="mb-3">
-                      {t("drRaunak.intro1")}
-                    </p>
-                    <p>
-                      {t("drRaunak.intro2")}
-                    </p>
+                    <p className="mb-3">{t("drRaunak.intro1")}</p>
+                    <p>{t("drRaunak.intro2")}</p>
                   </div>
                 </div>
               </section>
 
               {/* Expertise Section */}
-              <section className="w-full flex flex-col gap-[51px] items-center">
+              <section
+                ref={raunakExpertiseRef}
+                className="w-full flex flex-col gap-[51px] items-center"
+              >
                 <div className="flex flex-col gap-2 items-center text-center text-[#0c1119] max-w-[642px]">
                   <h2 className="font-['Playfair_Display'] text-[34px] leading-normal">
                     {t("drRaunak.expertiseTitle")}
@@ -102,6 +214,7 @@ export default function DoctorsPage() {
 
             {/* Timeline Section - Full Width */}
             <section
+              ref={raunakTimelineRef}
               className="
     relative left-1/2 right-1/2
     w-[100vw] -ml-[50vw] -mr-[50vw]
@@ -111,7 +224,10 @@ export default function DoctorsPage() {
   "
             >
               <div className="flex flex-col items-center justify-between h-[820px] w-[320px]">
-                <div className="bg-[#f6de84] rounded-full w-[200px] h-[200px] flex items-center justify-center">
+                <div
+                  ref={raunakTimelineIcon1Ref}
+                  className="bg-[#f6de84] rounded-full w-[200px] h-[200px] flex items-center justify-center"
+                >
                   <div className="relative w-[130px] h-[130px]">
                     <Image
                       src="/icons/hat.svg"
@@ -122,7 +238,10 @@ export default function DoctorsPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-4 items-center text-center text-[#0c1119]">
+                <div
+                  ref={raunakTimelineTrainingRef}
+                  className="flex flex-col gap-4 items-center text-center text-[#0c1119]"
+                >
                   <h3 className="font-['Playfair_Display'] text-[28px] leading-normal">
                     {t("drRaunak.trainingTitle")}
                   </h3>
@@ -133,7 +252,10 @@ export default function DoctorsPage() {
                   </div>
                 </div>
 
-                <div className="bg-[#f6de84] rounded-full w-[200px] h-[200px] flex items-center justify-center">
+                <div
+                  ref={raunakTimelineIcon2Ref}
+                  className="bg-[#f6de84] rounded-full w-[200px] h-[200px] flex items-center justify-center"
+                >
                   <div className="relative w-[130px] h-[130px]">
                     <Image
                       src="/icons/hands.svg"
@@ -148,25 +270,25 @@ export default function DoctorsPage() {
               <div className="h-[600px] w-[2px] bg-[#0c1119] opacity-20"></div>
 
               <div className="flex flex-col items-center justify-between h-[720px] w-[400px]">
-                <div className="flex flex-col gap-4 items-center text-center text-[#0c1119]">
+                <div
+                  ref={raunakTimelineQualificationsRef}
+                  className="flex flex-col gap-4 items-center text-center text-[#0c1119]"
+                >
                   <h3 className="font-['Playfair_Display'] text-[28px] leading-normal">
                     {t("drRaunak.qualificationsTitle")}
                   </h3>
                   <ul className="font-semibold text-[16px] leading-normal list-disc list-inside text-left space-y-1.5">
-                    <li>
-                      {t("drRaunak.qualification1")}
-                    </li>
+                    <li>{t("drRaunak.qualification1")}</li>
                     <li>{t("drRaunak.qualification2")}</li>
-                    <li>
-                      {t("drRaunak.qualification3")}
-                    </li>
-                    <li>
-                      {t("drRaunak.qualification4")}
-                    </li>
+                    <li>{t("drRaunak.qualification3")}</li>
+                    <li>{t("drRaunak.qualification4")}</li>
                   </ul>
                 </div>
 
-                <div className="bg-[#f6de84] rounded-full w-[200px] h-[200px] flex items-center justify-center">
+                <div
+                  ref={raunakTimelineIcon3Ref}
+                  className="bg-[#f6de84] rounded-full w-[200px] h-[200px] flex items-center justify-center"
+                >
                   <div className="relative w-[130px] h-[130px]">
                     <Image
                       src="/icons/suitcase.svg"
@@ -177,7 +299,10 @@ export default function DoctorsPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-4 items-center text-center text-[#0c1119]">
+                <div
+                  ref={raunakTimelineCareRef}
+                  className="flex flex-col gap-4 items-center text-center text-[#0c1119]"
+                >
                   <h3 className="font-['Playfair_Display'] text-[28px] leading-normal">
                     {t("drRaunak.personalizedCareTitle")}
                   </h3>
@@ -190,6 +315,7 @@ export default function DoctorsPage() {
 
             {/* Gallery Section - Full Width */}
             <section
+              ref={raunakGalleryRef}
               className="
     relative left-1/2 right-1/2
     w-[100vw] -ml-[50vw] -mr-[50vw]
@@ -232,7 +358,10 @@ export default function DoctorsPage() {
           <div className="flex flex-col w-full">
             <div className="flex flex-col gap-20 pb-16 w-full max-w-[1046px] px-3 mx-auto">
               {/* Hero Section */}
-              <section className="bg-[#d5edfd] rounded-[18px] w-full p-[36px] flex items-center gap-[64px]">
+              <section
+                ref={kavishaHeroRef}
+                className="bg-[#d5edfd] rounded-[18px] w-full p-[36px] flex items-center gap-[64px]"
+              >
                 <div className="relative w-[286px] h-[376px] rounded-[22px] overflow-hidden flex-shrink-0">
                   <Image
                     src="/gallery/kavisha.png"
@@ -251,15 +380,16 @@ export default function DoctorsPage() {
                     </p>
                   </div>
                   <div className="text-[18px] leading-normal">
-                    <p>
-                      {t("drKavisha.intro")}
-                    </p>
+                    <p>{t("drKavisha.intro")}</p>
                   </div>
                 </div>
               </section>
 
               {/* Expertise Section */}
-              <section className="w-full flex flex-col gap-[51px] items-center">
+              <section
+                ref={kavishaExpertiseRef}
+                className="w-full flex flex-col gap-[51px] items-center"
+              >
                 <div className="flex flex-col gap-2 items-center text-center text-[#0c1119] max-w-[642px]">
                   <h2 className="font-['Playfair_Display'] text-[34px] leading-normal">
                     {t("drKavisha.expertiseTitle")}
@@ -284,6 +414,7 @@ export default function DoctorsPage() {
 
             {/* Timeline Section - Full Width */}
             <section
+              ref={kavishaTimelineRef}
               className="
     relative left-1/2 right-1/2
     w-[100vw] -ml-[50vw] -mr-[50vw]
@@ -293,7 +424,10 @@ export default function DoctorsPage() {
   "
             >
               <div className="flex flex-col items-center justify-between h-[900px] w-[320px]">
-                <div className="bg-[#f6de84] rounded-full w-[200px] h-[200px] flex items-center justify-center">
+                <div
+                  ref={kavishaTimelineIcon1Ref}
+                  className="bg-[#f6de84] rounded-full w-[200px] h-[200px] flex items-center justify-center"
+                >
                   <div className="relative w-[130px] h-[130px]">
                     <Image
                       src="/icons/hat.svg"
@@ -304,23 +438,25 @@ export default function DoctorsPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-4 items-center text-center text-[#0c1119]">
+                <div
+                  ref={kavishaTimelineExperienceRef}
+                  className="flex flex-col gap-4 items-center text-center text-[#0c1119]"
+                >
                   <h3 className="font-['Playfair_Display'] text-[28px] leading-normal">
                     {t("drKavisha.experienceTitle")}
                   </h3>
                   <ul className="font-semibold text-[16px] leading-normal list-disc list-inside text-left space-y-1.5">
                     <li>{t("drKavisha.experience1")}</li>
                     <li>{t("drKavisha.experience2")}</li>
-                    <li>
-                      {t("drKavisha.experience3")}
-                    </li>
-                    <li>
-                      {t("drKavisha.experience4")}
-                    </li>
+                    <li>{t("drKavisha.experience3")}</li>
+                    <li>{t("drKavisha.experience4")}</li>
                   </ul>
                 </div>
 
-                <div className="bg-[#f6de84] rounded-full w-[200px] h-[200px] flex items-center justify-center">
+                <div
+                  ref={kavishaTimelineIcon2Ref}
+                  className="bg-[#f6de84] rounded-full w-[200px] h-[200px] flex items-center justify-center"
+                >
                   <div className="relative w-[130px] h-[130px]">
                     <Image
                       src="/icons/hands.svg"
@@ -335,27 +471,25 @@ export default function DoctorsPage() {
               <div className="h-[700px] w-[2px] bg-[#0c1119] opacity-20"></div>
 
               <div className="flex flex-col items-center justify-between h-[900px] w-[400px]">
-                <div className="flex flex-col gap-4 items-center text-center text-[#0c1119]">
+                <div
+                  ref={kavishaTimelineQualificationsRef}
+                  className="flex flex-col gap-4 items-center text-center text-[#0c1119]"
+                >
                   <h3 className="font-['Playfair_Display'] text-[28px] leading-normal">
                     {t("drKavisha.qualificationsTitle")}
                   </h3>
                   <ul className="font-semibold text-[16px] leading-normal list-disc list-inside text-left space-y-1.5">
-                    <li>
-                      {t("drKavisha.qualification1")}
-                    </li>
-                    <li>
-                      {t("drKavisha.qualification2")}
-                    </li>
-                    <li>
-                      {t("drKavisha.qualification3")}
-                    </li>
-                    <li>
-                      {t("drKavisha.qualification4")}
-                    </li>
+                    <li>{t("drKavisha.qualification1")}</li>
+                    <li>{t("drKavisha.qualification2")}</li>
+                    <li>{t("drKavisha.qualification3")}</li>
+                    <li>{t("drKavisha.qualification4")}</li>
                   </ul>
                 </div>
 
-                <div className="bg-[#f6de84] rounded-full w-[200px] h-[200px] flex items-center justify-center">
+                <div
+                  ref={kavishaTimelineIcon3Ref}
+                  className="bg-[#f6de84] rounded-full w-[200px] h-[200px] flex items-center justify-center"
+                >
                   <div className="relative w-[130px] h-[130px]">
                     <Image
                       src="/icons/suitcase.svg"
@@ -366,23 +500,18 @@ export default function DoctorsPage() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-4 items-center text-center text-[#0c1119]">
+                <div
+                  ref={kavishaTimelineCoursesRef}
+                  className="flex flex-col gap-4 items-center text-center text-[#0c1119]"
+                >
                   <h3 className="font-['Playfair_Display'] text-[28px] leading-normal">
                     {t("drKavisha.coursesTitle")}
                   </h3>
                   <ul className="font-semibold text-[16px] leading-normal list-disc list-inside text-left space-y-1.5">
-                    <li>
-                      {t("drKavisha.course1")}
-                    </li>
-                    <li>
-                      {t("drKavisha.course2")}
-                    </li>
-                    <li>
-                      {t("drKavisha.course3")}
-                    </li>
-                    <li>
-                      {t("drKavisha.course4")}
-                    </li>
+                    <li>{t("drKavisha.course1")}</li>
+                    <li>{t("drKavisha.course2")}</li>
+                    <li>{t("drKavisha.course3")}</li>
+                    <li>{t("drKavisha.course4")}</li>
                   </ul>
                 </div>
               </div>
@@ -390,6 +519,7 @@ export default function DoctorsPage() {
 
             {/* Gallery Section - Full Width */}
             <section
+              ref={kavishaGalleryRef}
               className="
     relative left-1/2 right-1/2
     w-[100vw] -ml-[50vw] -mr-[50vw]
