@@ -354,7 +354,7 @@ export default function Home() {
               <ServiceCard title="Liposuction" description="Fat removal surgery" icon={{ src: "/icons/liposuction.svg", alt: "Liposuction" }} variant="centered" />
               <ServiceCard title="Fat Grafting" description="Natural body contouring" icon={{ src: "/icons/fatgrafting.svg", alt: "Fat Grafting" }} variant="centered" />
               <ServiceCard title="Tummy Tuck" description="Abdominal contouring" icon={{ src: "/icons/tummytuck.svg", alt: "Tummy Tuck" }} variant="centered" />
-              <ServiceCard title="Gynecomastia" description="Male breast reduction" icon={{ src: "/icons/gynecology.svg", alt: "Gynecomastia" }} variant="centered" />
+              <ServiceCard title="Gynecomastia" description="Male breast reduction" icon={{ src: "/icons/gynecomastia.svg", alt: "Gynecomastia" }} variant="centered" />
             </div>
           </div>
 

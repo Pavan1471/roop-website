@@ -244,7 +244,7 @@ export default function Services() {
     {
       title: t("aestheticTreatments.maleBreast.title"),
       icon: {
-        src: "/icons/gynecology.svg",
+        src: "/icons/gynecomastia.svg",
         alt: t("aestheticTreatments.maleBreast.title"),
       },
       description: t("aestheticTreatments.maleBreast.description"),
@@ -366,7 +366,7 @@ export default function Services() {
     {
       title: t("surgical.gynecomastia.title"),
       icon: {
-        src: "/icons/gynecology.svg",
+        src: "/icons/gynecomastia.svg",
         alt: t("surgical.gynecomastia.title"),
       },
       description: t("surgical.gynecomastia.description"),
