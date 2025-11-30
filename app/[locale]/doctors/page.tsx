@@ -50,6 +50,10 @@ export default function DoctorsPage() {
   }, [tabParam]);
 
   useEffect(() => {
+    // Disable animations on mobile devices
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
     // Animate sections based on active tab
     const animateSection = (ref: React.RefObject<HTMLElement>) => {
       if (ref.current) {

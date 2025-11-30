@@ -17,6 +17,10 @@ export default function ContactPage() {
   const stayInTouchRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
+    // Disable animations on mobile devices
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
     // Banner animation - slide up and fade in
     if (bannerRef.current) {
       gsap.fromTo(

@@ -74,6 +74,10 @@ export default function Home() {
     // Scroll-triggered animations only after splash is done
     if (!animationComplete) return;
 
+    // Disable animations on mobile devices
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
     // Hero section animation
     if (heroRef.current) {
       gsap.fromTo(
