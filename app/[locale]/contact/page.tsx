@@ -165,7 +165,7 @@ export default function ContactPage() {
           <div className="absolute bg-[#f6de84] w-[160px] h-[180px] rounded-[22px] bottom-0 right-0 z-0"></div>
           <div className="relative w-[500px] h-[380px] rounded-[18px] overflow-hidden ml-[35px] mt-[27px] z-10">
             <Image
-              src="/gallery/contactimages.png"
+              src="/gallery/contactImage.png"
               alt="Medical consultation"
               fill
               className="object-cover"
@@ -188,6 +188,14 @@ export default function ContactPage() {
               </div>
               <p className="text-[24px] text-[#0c1119] leading-normal flex-1">
                 {t("stayInTouch.address")}
+              </p>
+            </div>
+            <div className="flex gap-6 items-start">
+              <div className="bg-[#f6de84] rounded-lg w-[48px] h-[48px] flex items-center justify-center flex-shrink-0">
+                <MapPin className="w-6 h-6 text-[#0c1119]" />
+              </div>
+              <p className="text-[24px] text-[#0c1119] leading-normal flex-1">
+                {t("stayInTouch.addressSurgery")}
               </p>
             </div>
             <div className="flex gap-6 items-center">

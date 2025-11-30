@@ -16,6 +16,9 @@ export default function Home() {
   const redefiningRef = useRef<HTMLDivElement>(null);
   const specialistsRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const heroImage1Ref = useRef<HTMLImageElement>(null);
+  const heroImage2Ref = useRef<HTMLImageElement>(null);
+  const heroImage3Ref = useRef<HTMLImageElement>(null);
   const [showSplash, setShowSplash] = React.useState(true);
   const [animationComplete, setAnimationComplete] = React.useState(false);
 
@@ -92,6 +95,24 @@ export default function Home() {
         }
       );
     }
+
+    // Hero images animation - staggered from right
+    const heroImages = [heroImage1Ref.current, heroImage2Ref.current, heroImage3Ref.current];
+    heroImages.forEach((img, index) => {
+      if (img) {
+        gsap.fromTo(
+          img,
+          { x: 100, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.8,
+            delay: 0.3 + index * 0.15,
+            ease: "power3.out",
+          }
+        );
+      }
+    });
 
     // Services section animation
     if (servicesRef.current) {
@@ -215,7 +236,7 @@ export default function Home() {
       <div ref={contentRef} className="flex flex-col gap-20 pb-16" style={{ opacity: showSplash ? 0 : 1 }}>
         {/* Hero */}
         <section ref={heroRef} className="rounded-2xl overflow-hidden relative">
-          <div className="relative h-[280px] sm:h-[340px] md:h-[380px] w-full">
+          <div className="relative h-[280px] sm:h-[340px] md:h-[420px] w-full">
             {/* Background image */}
             <div
               className="absolute inset-0 bg-cover bg-center"
@@ -261,12 +282,28 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-              {/* Right hero images */}
-              <div className="hidden md:block relative z-10 flex-shrink-0">
+              {/* Right hero images - Layered */}
+              <div className="hidden md:block relative flex-shrink-0 w-[320px] h-[320px]">
+                {/* Hero 1 - Top Right */}
                 <img
-                  src="/gallery/heroimages.svg"
-                  alt="Clinic interior"
-                  className="h-[280px] w-auto object-contain"
+                  ref={heroImage1Ref}
+                  src="/gallery/hero1.svg"
+                  alt="Clinic interior 1"
+                  className="absolute top-0 right-0 w-[180px] h-auto object-contain z-[5] rounded-2xl"
+                />
+                {/* Hero 2 - Middle Left */}
+                <img
+                  ref={heroImage2Ref}
+                  src="/gallery/hero2.svg"
+                  alt="Clinic interior 2"
+                  className="absolute top-[60px] left-0 w-[200px] h-auto object-contain z-[6] rounded-2xl"
+                />
+                {/* Hero 3 - Bottom Right */}
+                <img
+                  ref={heroImage3Ref}
+                  src="/gallery/hero3.svg"
+                  alt="Clinic interior 3"
+                  className="absolute bottom-[-40px] right-[0px] w-[220px] h-auto object-contain z-[7] rounded-2xl"
                 />
               </div>
             </div>
