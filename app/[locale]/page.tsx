@@ -215,7 +215,7 @@ export default function Home() {
       <div ref={contentRef} className="flex flex-col gap-20 pb-16" style={{ opacity: showSplash ? 0 : 1 }}>
         {/* Hero */}
         <section ref={heroRef} className="rounded-2xl overflow-hidden relative">
-          <div className="relative h-[340px] md:h-[380px] w-full">
+          <div className="relative h-[280px] sm:h-[340px] md:h-[380px] w-full">
             {/* Background image */}
             <div
               className="absolute inset-0 bg-cover bg-center"
@@ -230,11 +230,11 @@ export default function Home() {
               }}
             />
             {/* Content container */}
-            <div className="absolute inset-0 p-6 md:p-10 flex items-center justify-between">
+            <div className="absolute inset-0 p-4 sm:p-6 md:p-10 flex items-center justify-between">
               {/* Left content */}
-              <div className="flex flex-col gap-5 max-w-[900px] z-10">
+              <div className="flex flex-col gap-3 sm:gap-5 max-w-[900px] z-10">
                 <h1
-                  className="text-[32px] md:text-[48px] text-white"
+                  className="text-[24px] sm:text-[32px] md:text-[48px] text-white leading-tight"
                   dangerouslySetInnerHTML={{
                     __html: t
                       .raw("hero.title")
@@ -245,17 +245,17 @@ export default function Home() {
                       .replace("</highlight>", "</span>"),
                   }}
                 />
-                <p className="text-white/90 text-[18px] md:text-[24px] max-w-[700px]">
+                <p className="text-white/90 text-[14px] sm:text-[18px] md:text-[24px] max-w-[700px]">
                   {t("hero.description")}
                 </p>
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                   <Link href="/contact">
-                    <button className="bg-[#F6DE84] text-[#0C1119] rounded-xl h-14 px-8 text-[20px] font-semibold hover:cursor-pointer">
+                    <button className="bg-[#F6DE84] text-[#0C1119] rounded-xl h-11 sm:h-14 px-4 sm:px-8 text-[16px] sm:text-[20px] font-semibold hover:cursor-pointer w-full sm:w-auto">
                       {t("hero.consultButton")}
                     </button>
                   </Link>
                   <Link href="/services">
-                    <button className="border border-white text-white rounded-xl h-14 px-8 text-[20px] font-semibold hover:cursor-pointer">
+                    <button className="border border-white text-white rounded-xl h-11 sm:h-14 px-4 sm:px-8 text-[16px] sm:text-[20px] font-semibold hover:cursor-pointer w-full sm:w-auto">
                       {t("hero.exploreButton")}
                     </button>
                   </Link>
@@ -274,14 +274,14 @@ export default function Home() {
         </section>
 
         {/* What We Offer */}
-        <section ref={servicesRef} className="flex flex-col items-center gap-8">
-          <div className="text-center max-w-[800px]">
-            <h2 className="text-[42px]">{t("services.title")}</h2>
-            <p className="text-[24px] text-[#0C1119]/80">
+        <section ref={servicesRef} className="flex flex-col items-center gap-6 sm:gap-8">
+          <div className="text-center max-w-[800px] px-2">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px]">{t("services.title")}</h2>
+            <p className="text-[16px] sm:text-[20px] md:text-[24px] text-[#0C1119]/80">
               {t("services.description")}
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[60px] w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 md:gap-[60px] w-full">
             {cards.map((c) => (
               <ServiceCard
                 key={c.title}
@@ -292,24 +292,24 @@ export default function Home() {
             ))}
           </div>
           <Link href="/services">
-            <button className="text-[22px] hover:cursor-pointer">
+            <button className="text-[18px] sm:text-[22px] hover:cursor-pointer">
               {t("services.viewAll")}
             </button>
           </Link>
         </section>
 
         {/* Head to Toe Services Section */}
-        <section className="flex flex-col items-center gap-12">
-          <div className="text-center max-w-[900px]">
-            <h2 className="text-[42px] mb-3">Complete Care from Head to Toe</h2>
-            <p className="text-[24px] text-[#0C1119]/80">
+        <section className="flex flex-col items-center gap-8 sm:gap-12">
+          <div className="text-center max-w-[900px] px-2">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] mb-2 sm:mb-3">Complete Care from Head to Toe</h2>
+            <p className="text-[16px] sm:text-[20px] md:text-[24px] text-[#0C1119]/80">
               Comprehensive aesthetic and cosmetic solutions for every part of your body
             </p>
           </div>
 
           {/* Surgical Procedures */}
           <div className="w-full">
-            <h3 className="text-[32px] font-semibold mb-6 text-[#0074B7]">Surgical Procedures</h3>
+            <h3 className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold mb-4 sm:mb-6 text-[#0074B7]">Surgical Procedures</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
               <ServiceCard title="Hair Transplant" description="Natural hair restoration" icon={{ src: "/icons/hairtransplant.svg", alt: "Hair Transplant" }} variant="centered" />
               <ServiceCard title="Rhinoplasty" description="Nose reshaping surgery" icon={{ src: "/icons/rhinoplasty.svg", alt: "Rhinoplasty" }} variant="centered" />
@@ -323,7 +323,7 @@ export default function Home() {
 
           {/* Non-Surgical Treatments */}
           <div className="w-full">
-            <h3 className="text-[32px] font-semibold mb-6 text-[#0074B7]">Non-Surgical Treatments</h3>
+            <h3 className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold mb-4 sm:mb-6 text-[#0074B7]">Non-Surgical Treatments</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
               <ServiceCard title="Botox & Fillers" description="Injectable treatments" icon={{ src: "/icons/face.svg", alt: "Botox" }} variant="centered" />
               <ServiceCard title="Thread Lift" description="Non-surgical face lift" icon={{ src: "/icons/face.svg", alt: "Thread Lift" }} variant="centered" />
@@ -337,7 +337,7 @@ export default function Home() {
 
           {/* Laser Treatments */}
           <div className="w-full">
-            <h3 className="text-[32px] font-semibold mb-6 text-[#0074B7]">Laser Treatments</h3>
+            <h3 className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold mb-4 sm:mb-6 text-[#0074B7]">Laser Treatments</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
               <ServiceCard title="MNRF Celina" description="Micro-needling RF" icon={{ src: "/icons/mnrfcelina.svg", alt: "MNRF" }} variant="centered" />
               <ServiceCard title="Tattoo Removal" description="Laser tattoo removal" icon={{ src: "/icons/tattooremoval.svg", alt: "Tattoo Removal" }} variant="centered" />
@@ -349,7 +349,7 @@ export default function Home() {
 
           {/* Specialized Care */}
           <div className="w-full">
-            <h3 className="text-[32px] font-semibold mb-6 text-[#0074B7]">Specialized Care</h3>
+            <h3 className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold mb-4 sm:mb-6 text-[#0074B7]">Specialized Care</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
               <ServiceCard title="Gynecology" description="Women's health services" icon={{ src: "/icons/gynecology.svg", alt: "Gynecology" }} variant="centered" />
               <ServiceCard title="Infertility Counselling" description="Expert guidance" icon={{ src: "/icons/infertilitycounselling.svg", alt: "Infertility" }} variant="centered" />
@@ -359,7 +359,7 @@ export default function Home() {
         </section>
 
         {/* Redefining section */}
-        <section ref={redefiningRef} className="grid md:grid-cols-2 gap-10 items-center">
+        <section ref={redefiningRef} className="grid md:grid-cols-2 gap-6 sm:gap-10 items-center">
           <div className="relative hidden md:block">
             <img
               src="/gallery/confidence.svg"
@@ -367,9 +367,9 @@ export default function Home() {
               className="w-full max-w-[400px] h-auto"
             />
           </div>
-          <div className="flex flex-col gap-3 max-w-[582px]">
+          <div className="flex flex-col gap-2 sm:gap-3 max-w-[582px] px-2">
             <h2
-              className="text-[32px] md:text-[48px] leading-tight"
+              className="text-[24px] sm:text-[32px] md:text-[48px] leading-tight"
               dangerouslySetInnerHTML={{
                 __html: t
                   .raw("redefining.title")
@@ -377,11 +377,11 @@ export default function Home() {
                   .replace("</highlight>", "</span>"),
               }}
             />
-            <p className="text-[18px] text-[#0C1119]/90">
+            <p className="text-[14px] sm:text-[16px] md:text-[18px] text-[#0C1119]/90">
               {t("redefining.description")}
             </p>
             <Link href="/contact">
-              <button className="bg-[#F6DE84] text-[#0C1119] rounded-xl h-11 px-6 text-[16px] font-semibold w-[216px] hover:cursor-pointer">
+              <button className="bg-[#F6DE84] text-[#0C1119] rounded-xl h-11 px-6 text-[16px] font-semibold w-full sm:w-[216px] hover:cursor-pointer">
                 {t("redefining.consultButton")}
               </button>
             </Link>
@@ -390,11 +390,11 @@ export default function Home() {
       </div>
 
       {/* Meet Our Specialists - Full Width */}
-      <section ref={specialistsRef} className="-mx-3 w-screen relative left-[50%] right-[50%] ml-[-50vw] mr-[-50vw] bg-gradient-to-t from-[#0074B7] to-[#F5F7F8] px-[20px] md:px-[48px] py-[43px]">
-        <div className="mx-auto max-w-[1046px] flex flex-col gap-16 items-center">
-          <div className="text-center max-w-[582px]">
-            <h2 className="text-[34px]">{t("specialists.title")}</h2>
-            <p className="text-[18px] text-[#0C1119]/80">
+      <section ref={specialistsRef} className="-mx-3 w-screen relative left-[50%] right-[50%] ml-[-50vw] mr-[-50vw] bg-gradient-to-t from-[#0074B7] to-[#F5F7F8] px-[16px] sm:px-[20px] md:px-[48px] py-[32px] sm:py-[43px]">
+        <div className="mx-auto max-w-[1046px] flex flex-col gap-10 sm:gap-16 items-center">
+          <div className="text-center max-w-[582px] px-2">
+            <h2 className="text-[28px] sm:text-[34px]">{t("specialists.title")}</h2>
+            <p className="text-[16px] sm:text-[18px] text-[#0C1119]/80">
               {t("specialists.description")}
             </p>
           </div>

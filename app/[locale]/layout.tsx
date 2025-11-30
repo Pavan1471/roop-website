@@ -40,13 +40,13 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider messages={messages}>
           {/* Persistent navbar with gap below */}
-          <div className="sticky top-3 z-50 flex w-full justify-center mb-8">
-            <div className="w-full max-w-[1600px] px-3">
+          <div className="sticky top-2 sm:top-3 z-50 flex w-full justify-center mb-6 sm:mb-8">
+            <div className="w-full max-w-[1600px] px-2 sm:px-3">
               <Navbar />
             </div>
           </div>
           <main className="w-full flex justify-center flex-1">
-            <div className="w-full max-w-[1600px] px-3">{children}</div>
+            <div className="w-full max-w-[1600px] px-2 sm:px-3">{children}</div>
           </main>
           {/* Persistent footer - full width */}
           <footer className="w-full bg-[#E0F0F5] px-4 sm:px-5 md:px-20 py-12 md:py-16 mt-auto">

@@ -60,23 +60,23 @@ export default function Navbar() {
   };
   
   return (
-    <nav className="bg-[#E0F0F5] rounded-2xl px-5 py-1.5 relative">
-      <div className="flex items-center justify-between h-[54px]">
+    <nav className="bg-[#E0F0F5] rounded-2xl px-3 sm:px-5 py-1.5 relative">
+      <div className="flex items-center justify-between h-[48px] sm:h-[54px]">
         {/* Logo with symbol and text - clickable to home */}
-        <Link href={`/${currentLocale}`} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <Link href={`/${currentLocale}`} className="flex items-center gap-1.5 sm:gap-2 hover:opacity-80 transition-opacity">
           <Image 
             src="/logos/logoSymbol.png" 
             alt="Roop Clinic Logo" 
-            width={43} 
-            height={54}
-            className="object-contain brightness-50"
+            width={36} 
+            height={45}
+            className="object-contain brightness-50 sm:w-[43px] sm:h-[54px]"
           />
           <Image 
             src="/logos/logoText.png" 
             alt="Roop Clinic" 
-            width={93} 
-            height={25}
-            className="object-contain brightness-50"
+            width={78} 
+            height={21}
+            className="object-contain brightness-50 sm:w-[93px] sm:h-[25px]"
           />
         </Link>
 
