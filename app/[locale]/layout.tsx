@@ -102,7 +102,7 @@ export default async function RootLayout({
                   {messages.Footer?.contactUs?.title || "Contact Us"}
                 </h4>
                 <ul className="space-y-2.5 text-[18px] sm:text-[20px] md:text-[22px]">
-                  <li>
+                  <li className="whitespace-pre-line">
                     {messages.Footer?.contactUs?.address ||
                       "3 Phulwani Plaza, Opposite Iskcon Temple 286, Mahashweta Nagar, Ujjain MP"}
                   </li>

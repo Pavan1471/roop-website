@@ -270,7 +270,7 @@ export default function Home() {
                       .replace("</highlight>", "</span>"),
                   }}
                 />
-                <p className="text-white/90 text-[14px] sm:text-[18px] md:text-[24px] max-w-[700px]">
+                <p className="text-white/90 text-[14px] sm:text-[18px] md:text-[24px] max-w-[700px] whitespace-pre-line">
                   {t("hero.description")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">

@@ -193,7 +193,7 @@ export default function ContactPage() {
               <div className="bg-[#f6de84] rounded-lg w-[40px] h-[40px] md:w-[48px] md:h-[48px] flex items-center justify-center flex-shrink-0">
                 <MapPin className="w-5 h-5 md:w-6 md:h-6 text-[#0c1119]" />
               </div>
-              <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] text-[#0c1119] leading-normal flex-1">
+              <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] text-[#0c1119] leading-normal flex-1 whitespace-pre-line">
                 {t("stayInTouch.address")}
               </p>
             </div>
@@ -201,7 +201,7 @@ export default function ContactPage() {
               <div className="bg-[#f6de84] rounded-lg w-[40px] h-[40px] md:w-[48px] md:h-[48px] flex items-center justify-center flex-shrink-0">
                 <MapPin className="w-5 h-5 md:w-6 md:h-6 text-[#0c1119]" />
               </div>
-              <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] text-[#0c1119] leading-normal flex-1">
+              <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] text-[#0c1119] leading-normal flex-1 whitespace-pre-line">
                 {t("stayInTouch.addressSurgery")}
               </p>
             </div>
