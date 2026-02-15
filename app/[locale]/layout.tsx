@@ -19,7 +19,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Roop Clinic",
+  title: "Roop Clinique",
   description: "Roop Clinic website",
 };
 
@@ -49,7 +49,7 @@ export default async function RootLayout({
             <div className="w-full max-w-[1600px] px-2 sm:px-3">{children}</div>
           </main>
           {/* Persistent footer - full width */}
-          <footer className="w-full bg-[#E0F0F5] px-4 sm:px-5 md:px-20 py-12 md:py-16 mt-auto">
+           <footer className="w-full bg-[#E0F0F5] px-4 sm:px-5 md:px-20 py-12 md:py-16 mt-auto">
             <div className="mx-auto max-w-[1600px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
               <div>
                 <h4 className="text-[24px] sm:text-[28px] md:text-[32px] mb-5 md:mb-6 font-semibold">
@@ -90,11 +90,21 @@ export default async function RootLayout({
                   {messages.Footer?.legal?.title || "Legal & Policy"}
                 </h4>
                 <ul className="space-y-2 text-[18px] sm:text-[20px] md:text-[22px]">
-                  <li>{messages.Footer?.legal?.privacy || "Privacy Policy"}</li>
                   <li>
-                    {messages.Footer?.legal?.terms || "Terms & Conditions"}
+                    <Link href={`/${locale}/privacy-policy`} className="hover:text-[#0074B7] transition-colors">
+                      {messages.Footer?.legal?.privacy || "Privacy Policy"}
+                    </Link>
                   </li>
-                  <li>{messages.Footer?.legal?.disclaimer || "Disclaimer"}</li>
+                  <li>
+                    <Link href={`/${locale}/terms-conditions`} className="hover:text-[#0074B7] transition-colors">
+                      {messages.Footer?.legal?.terms || "Terms & Conditions"}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={`/${locale}/disclaimer`} className="hover:text-[#0074B7] transition-colors">
+                      {messages.Footer?.legal?.disclaimer || "Disclaimer"}
+                    </Link>
+                  </li>
                 </ul>
               </div>
               <div className="sm:col-span-2 md:col-span-1">
@@ -103,8 +113,14 @@ export default async function RootLayout({
                 </h4>
                 <ul className="space-y-2.5 text-[18px] sm:text-[20px] md:text-[22px]">
                   <li>
-                    {messages.Footer?.contactUs?.address ||
-                      "3 Phulwani Plaza, Opposite Iskcon Temple 286, Mahashweta Nagar, Ujjain MP"}
+                    <span className="font-semibold">Roop plastic surgery clinique and infertility counselling centre:</span>{" "}
+                    {messages.Footer?.contactUs?.address1 ||
+                      "No 3 Phulwani Plaza, 286 Mahashweta Nagar, Opposite Iskcon temple, Ujjain, MP, INDIA - 456010"}
+                  </li>
+                  <li>
+                    <span className="font-semibold">Shinde Nursing and Maternity Home:</span>{" "}
+                    {messages.Footer?.contactUs?.address2 ||
+                      "48 Subhash Nagar, Opposite do talaab, Indore Road, Ujjain, MP, 456010"}
                   </li>
                   <li>
                     {messages.Footer?.contactUs?.phone ||

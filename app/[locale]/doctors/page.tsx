@@ -18,30 +18,30 @@ export default function DoctorsPage() {
   const [activeTab, setActiveTab] = useState<string>(tabParam || "raunak");
 
   // Refs for Dr. Raunak sections
-  const raunakHeroRef = useRef<HTMLDivElement>(null);
-  const raunakExpertiseRef = useRef<HTMLDivElement>(null);
-  const raunakTimelineRef = useRef<HTMLDivElement>(null);
-  const raunakGalleryRef = useRef<HTMLDivElement>(null);
+  const raunakHeroRef = useRef<HTMLDivElement | null>(null);
+  const raunakExpertiseRef = useRef<HTMLDivElement | null>(null);
+  const raunakTimelineRef = useRef<HTMLDivElement | null>(null);
+  const raunakGalleryRef = useRef<HTMLDivElement | null>(null);
   // Timeline parts
-  const raunakTimelineIcon1Ref = useRef<HTMLDivElement>(null);
-  const raunakTimelineTrainingRef = useRef<HTMLDivElement>(null);
-  const raunakTimelineIcon2Ref = useRef<HTMLDivElement>(null);
-  const raunakTimelineQualificationsRef = useRef<HTMLDivElement>(null);
-  const raunakTimelineIcon3Ref = useRef<HTMLDivElement>(null);
-  const raunakTimelineCareRef = useRef<HTMLDivElement>(null);
+  const raunakTimelineIcon1Ref = useRef<HTMLDivElement | null>(null);
+  const raunakTimelineTrainingRef = useRef<HTMLDivElement | null>(null);
+  const raunakTimelineIcon2Ref = useRef<HTMLDivElement | null>(null);
+  const raunakTimelineQualificationsRef = useRef<HTMLDivElement | null>(null);
+  const raunakTimelineIcon3Ref = useRef<HTMLDivElement | null>(null);
+  const raunakTimelineCareRef = useRef<HTMLDivElement | null>(null);
 
   // Refs for Dr. Kavisha sections
-  const kavishaHeroRef = useRef<HTMLDivElement>(null);
-  const kavishaExpertiseRef = useRef<HTMLDivElement>(null);
-  const kavishaTimelineRef = useRef<HTMLDivElement>(null);
-  const kavishaGalleryRef = useRef<HTMLDivElement>(null);
+  const kavishaHeroRef = useRef<HTMLDivElement | null>(null);
+  const kavishaExpertiseRef = useRef<HTMLDivElement | null>(null);
+  const kavishaTimelineRef = useRef<HTMLDivElement | null>(null);
+  const kavishaGalleryRef = useRef<HTMLDivElement | null>(null);
   // Timeline parts
-  const kavishaTimelineIcon1Ref = useRef<HTMLDivElement>(null);
-  const kavishaTimelineExperienceRef = useRef<HTMLDivElement>(null);
-  const kavishaTimelineIcon2Ref = useRef<HTMLDivElement>(null);
-  const kavishaTimelineQualificationsRef = useRef<HTMLDivElement>(null);
-  const kavishaTimelineIcon3Ref = useRef<HTMLDivElement>(null);
-  const kavishaTimelineCoursesRef = useRef<HTMLDivElement>(null);
+  const kavishaTimelineIcon1Ref = useRef<HTMLDivElement | null>(null);
+  const kavishaTimelineExperienceRef = useRef<HTMLDivElement | null>(null);
+  const kavishaTimelineIcon2Ref = useRef<HTMLDivElement | null>(null);
+  const kavishaTimelineQualificationsRef = useRef<HTMLDivElement | null>(null);
+  const kavishaTimelineIcon3Ref = useRef<HTMLDivElement | null>(null);
+  const kavishaTimelineCoursesRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (tabParam) {
@@ -55,7 +55,7 @@ export default function DoctorsPage() {
     if (isMobile) return;
 
     // Animate sections based on active tab
-    const animateSection = (ref: React.RefObject<HTMLElement>) => {
+    const animateSection = (ref: React.RefObject<HTMLDivElement | null>) => {
       if (ref.current) {
         gsap.fromTo(
           ref.current,
@@ -143,10 +143,10 @@ export default function DoctorsPage() {
   ];
 
   return (
-    <div className="bg-[#f5f7f8] flex flex-col items-center pb-0">
+    <div className="bg-[#f5f7f8] flex flex-col items-center pb-0 overflow-x-hidden overflow-y-hidden">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <div className="w-full max-w-[1600px] px-3 mx-auto pt-8">
-          <TabsList className="grid w-full grid-cols-2 mb-8">
+        <div className="w-full max-w-[1600px] px-3 mx-auto pb-3 md:pt-8">
+          <TabsList className="grid w-full grid-cols-1 md:grid-cols-2 mb-8">
             <TabsTrigger value="raunak" className="text-xl md:text-2xl">
               {t("drRaunak.name")}
             </TabsTrigger>
@@ -313,6 +313,169 @@ export default function DoctorsPage() {
                   <p className="font-semibold text-[20px] leading-normal">
                     {t("drRaunak.personalizedCareDescription")}
                   </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Member Associations Section */}
+            <section className="w-full max-w-[1600px] px-3 mx-auto py-16">
+              <div className="flex flex-col gap-8 items-center">
+                <h2 className="font-['Playfair_Display'] text-[36px] md:text-[44px] leading-normal text-center text-[#0c1119]">
+                  {t("drRaunak.associationsTitle")}
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+                  {[
+                    { name: t("drRaunak.association1"), logo: "/Logo/apsi.png" },
+                    { name: t("drRaunak.association2"), logo: "/Logo/Iaaps.png" },
+                    { name: t("drRaunak.association3"), logo: "/Logo/asi-logo-25.png" },
+                    { name: t("drRaunak.association4"), logo: "/Logo/IMA.jpeg" },
+                    { name: t("drRaunak.association5"), logo: "/Logo/issh.png" },
+                    { name: t("drRaunak.association6"), logo: "/Logo/APMPCG.png" },
+                  ].map((association, index) => (
+                    <div
+                      key={index}
+                      className="bg-white rounded-[12px] p-4 shadow-sm border border-[#e0e0e0] flex items-center gap-3"
+                    >
+                      <div className="relative w-[50px] h-[50px] flex-shrink-0">
+                        <Image
+                          src={association.logo}
+                          alt={association.name}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                      <p className="text-[16px] md:text-[18px] text-[#0c1119]">{association.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Paper Presentations & Awards Section */}
+            <section className="w-full bg-[#d5edfd] py-16">
+              <div className="max-w-[1600px] px-3 mx-auto">
+                <div className="flex flex-col gap-8 items-center">
+                  <h2 className="font-['Playfair_Display'] text-[36px] md:text-[44px] leading-normal text-center text-[#0c1119]">
+                    Paper Presentations & Awards
+                  </h2>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+                    <div className="bg-white rounded-[18px] p-6 shadow-sm">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-[#f6de84] rounded-full w-[50px] h-[50px] flex items-center justify-center flex-shrink-0">
+                          <span className="text-[24px]">🏆</span>
+                        </div>
+                        <h3 className="font-semibold text-[20px] text-[#0c1119]">Best Paper Presentation Award</h3>
+                      </div>
+                      <p className="text-[16px] text-[#0c1119]">14th Annual Conference – NZAPSCON, Kasauli, Himachal Pradesh, India (2018)</p>
+                    </div>
+                    <div className="bg-white rounded-[18px] p-6 shadow-sm">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-[#f6de84] rounded-full w-[50px] h-[50px] flex items-center justify-center flex-shrink-0">
+                          <span className="text-[24px]">🏆</span>
+                        </div>
+                        <h3 className="font-semibold text-[20px] text-[#0c1119]">Best Paper Award – IPGMER</h3>
+                      </div>
+                      <p className="text-[16px] text-[#0c1119]">59th Foundation Day Program, Jan 2015 – IPGMER, Kolkata, WB, India</p>
+                    </div>
+                    <div className="bg-white rounded-[18px] p-6 shadow-sm">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-[#0074b7] rounded-full w-[50px] h-[50px] flex items-center justify-center flex-shrink-0">
+                          <span className="text-[24px]">📄</span>
+                        </div>
+                        <h3 className="font-semibold text-[20px] text-[#0c1119]">Invited Guest Faculty Lecture</h3>
+                      </div>
+                      <p className="text-[16px] text-[#0c1119]">Scar Revision - Tips and Tricks – MP-CUTICON, 2023</p>
+                    </div>
+                    <div className="bg-white rounded-[18px] p-6 shadow-sm">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-[#0074b7] rounded-full w-[50px] h-[50px] flex items-center justify-center flex-shrink-0">
+                          <span className="text-[24px]">📄</span>
+                        </div>
+                        <h3 className="font-semibold text-[20px] text-[#0c1119]">Invited Paper – AESURGE 2023</h3>
+                      </div>
+                      <p className="text-[16px] text-[#0c1119]">Follicular Unit Extraction (FUE) – The Answer to Advanced Grade Male Pattern Baldness, Amby Valley, Lonavla, Maharashtra</p>
+                    </div>
+                    <div className="bg-white rounded-[18px] p-6 shadow-sm">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-[#0074b7] rounded-full w-[50px] h-[50px] flex items-center justify-center flex-shrink-0">
+                          <span className="text-[24px]">📄</span>
+                        </div>
+                        <h3 className="font-semibold text-[20px] text-[#0c1119]">ISPNS Conference Paper</h3>
+                      </div>
+                      <p className="text-[16px] text-[#0c1119]">&quot;Impact of High Resolution Ultrasound in Fracture-Associated Radial Nerve Palsy&quot; – 7th Annual Conference of Indian Society of Peripheral Nerve Surgery, New Delhi (2018)</p>
+                    </div>
+                    <div className="bg-white rounded-[18px] p-6 shadow-sm">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-[#0074b7] rounded-full w-[50px] h-[50px] flex items-center justify-center flex-shrink-0">
+                          <span className="text-[24px]">📄</span>
+                        </div>
+                        <h3 className="font-semibold text-[20px] text-[#0c1119]">Breast Reconstruction Research</h3>
+                      </div>
+                      <p className="text-[16px] text-[#0c1119]">&quot;Psychosocial and Surgical outcome of immediate breast reconstruction following mastectomy in Breast Cancer patients&quot; – IPGMER Case Series</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Conferences Attended Section */}
+            <section className="w-full max-w-[1600px] px-3 mx-auto py-16">
+              <div className="flex flex-col gap-8 items-center">
+                <h2 className="font-['Playfair_Display'] text-[36px] md:text-[44px] leading-normal text-center text-[#0c1119]">
+                  Conferences Attended
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+                  {[
+                    { name: "AESURG 2023", location: "Amby Valley, India", year: "March 2023" },
+                    { name: "MP-CUTICON 2023", location: "Ujjain, India (Invited Faculty)", year: "November 2023" },
+                    { name: "HAIRCON 2023", location: "Indore, India", year: "February 2023" },
+                    { name: "AESURG 2022", location: "Goa, India", year: "March 2022" },
+                    { name: "The Big Masterclass", location: "Lonavla, Maharashtra", year: "March 2020" },
+                    { name: "NZAPSCON 2018", location: "Kasauli, HP", year: "2018" },
+                    { name: "ISPNS 2018", location: "New Delhi", year: "2018" },
+                    { name: "ISPNS 2017", location: "Chandigarh", year: "2017" },
+                    { name: "INDOCLEFTCON 2016", location: "Chandigarh", year: "2016" },
+                    { name: "ASICON 2014", location: "Hyderabad", year: "December 2014" },
+                    { name: "ABSICON 2014", location: "Kolkata, WB", year: "June 2014" },
+                    { name: "ASICON 2013", location: "Ahmedabad", year: "December 2013" },
+                  ].map((conf, index) => (
+                    <div
+                      key={index}
+                      className="bg-white rounded-[12px] p-4 shadow-sm border border-[#e0e0e0]"
+                    >
+                      <h4 className="font-semibold text-[16px] text-[#0074b7]">{conf.name}</h4>
+                      <p className="text-[14px] text-[#0c1119]">{conf.location}</p>
+                      <p className="text-[12px] text-[#666]">{conf.year}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* Publications Section */}
+            <section className="w-full bg-[#f0f4f8] py-16">
+              <div className="max-w-[1600px] px-3 mx-auto">
+                <div className="flex flex-col gap-8 items-center">
+                  <h2 className="font-['Playfair_Display'] text-[36px] md:text-[44px] leading-normal text-center text-[#0c1119]">
+                    Publications
+                  </h2>
+                  <div className="flex flex-col gap-4 w-full">
+                    <div className="bg-white rounded-[12px] p-5 shadow-sm border-l-4 border-[#0074b7]">
+                      <p className="text-[16px] text-[#0c1119]">&quot;Free Flap Skin Paddle: A Painless Donor Site In Vivo&quot; – <span className="font-semibold">Indian Journal of Plastic Surgery, 52(02), 256-257</span> (2019)</p>
+                    </div>
+                    <div className="bg-white rounded-[12px] p-5 shadow-sm border-l-4 border-[#0074b7]">
+                      <p className="text-[16px] text-[#0c1119]">&quot;Inflammatory Myofibroblastic Tumor Arising in the Pancreatic Head: a Rare Case Report&quot; – <span className="font-semibold">Indian Journal of Surgery</span> (2015)</p>
+                    </div>
+                    <div className="bg-white rounded-[12px] p-5 shadow-sm border-l-4 border-[#0074b7]">
+                      <p className="text-[16px] text-[#0c1119]">&quot;Spontaneous cholecystocutaneous fistula: Still a complication of gallstones&quot; – <span className="font-semibold">International Journal of Research in Medical Sciences</span> (2014)</p>
+                    </div>
+                    <div className="bg-white rounded-[12px] p-5 shadow-sm border-l-4 border-[#0074b7]">
+                      <p className="text-[16px] text-[#0c1119]">&quot;Iatrogenic jejunal perforation while FJ tube re-insertion: a rare complication&quot; – <span className="font-semibold">International Journal of Scientific Reports</span> (2015)</p>
+                    </div>
+                    <div className="bg-white rounded-[12px] p-5 shadow-sm border-l-4 border-[#0074b7]">
+                      <p className="text-[16px] text-[#0c1119]">&quot;A comparative study for management of anemia in elective surgery patients with combination of IV Iron and Erythropoietin Alpha vs Hemotransfusion&quot; – <span className="font-semibold">International Journal of Medical Science and Clinical Invention</span> (2014)</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -517,6 +680,46 @@ export default function DoctorsPage() {
                     <li>{t("drKavisha.course3")}</li>
                     <li>{t("drKavisha.course4")}</li>
                   </ul>
+                </div>
+              </div>
+            </section>
+
+            {/* Conferences & Presentations Section */}
+            <section className="w-full bg-[#d5edfd] py-16">
+              <div className="max-w-[1600px] px-3 mx-auto">
+                <div className="flex flex-col gap-8 items-center">
+                  <h2 className="font-['Playfair_Display'] text-[36px] md:text-[44px] leading-normal text-center text-[#0c1119]">
+                    Conferences & Presentations
+                  </h2>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+                    <div className="bg-white rounded-[18px] p-6 shadow-sm">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-[#0074b7] rounded-full w-[50px] h-[50px] flex items-center justify-center flex-shrink-0">
+                          <span className="text-[24px]">📄</span>
+                        </div>
+                        <h3 className="font-semibold text-[20px] text-[#0c1119]">E-Poster Presentation – Fertivision 2020</h3>
+                      </div>
+                      <p className="text-[16px] text-[#0c1119]">Role of Lymphocyte Immunization Therapy in RIF/RPL – Fertivision, December 2020</p>
+                    </div>
+                    <div className="bg-white rounded-[18px] p-6 shadow-sm">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-[#f6de84] rounded-full w-[50px] h-[50px] flex items-center justify-center flex-shrink-0">
+                          <span className="text-[24px]">📚</span>
+                        </div>
+                        <h3 className="font-semibold text-[20px] text-[#0c1119]">IMSCON, Indore</h3>
+                      </div>
+                      <p className="text-[16px] text-[#0c1119]">Attended IMSCON Conference, Indore, February 2015</p>
+                    </div>
+                    <div className="bg-white rounded-[18px] p-6 shadow-sm lg:col-span-2">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-[#0074b7] rounded-full w-[50px] h-[50px] flex items-center justify-center flex-shrink-0">
+                          <span className="text-[24px]">🔬</span>
+                        </div>
+                        <h3 className="font-semibold text-[20px] text-[#0c1119]">Research Dissertation</h3>
+                      </div>
+                      <p className="text-[16px] text-[#0c1119]">Comparison of clinical outcomes of &apos;single blastocyst&apos; vs &apos;double blastocyst&apos; transfer in ART – Fellowship Dissertation at Amity University & Indian Fertility Society</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>

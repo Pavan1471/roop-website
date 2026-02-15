@@ -144,7 +144,7 @@ export default function GalleryPage() {
   ];
 
   return (
-    <div className="bg-[#f5f7f8] flex flex-col items-center pb-16">
+    <div className="bg-[#f5f7f8] flex flex-col items-center pb-16 overflow-x-hidden">
       {/* Gallery Banner */}
       <section
         ref={bannerRef}

@@ -4,13 +4,17 @@ import ServiceCard, { ServiceCardIcon } from "../../components/ServiceCard";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import React from "react";
+import { useParams } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const t = useTranslations("HomePage");
+  const params = useParams();
+  const locale = params.locale as string;
   const heroRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
   const redefiningRef = useRef<HTMLDivElement>(null);
@@ -190,6 +194,32 @@ export default function Home() {
     };
   }, [animationComplete]);
 
+  // Route mapping for service cards
+  const serviceRoutes: Record<string, string | null> = {
+    "Rhinoplasty": "rhinoplasty",
+    "Otoplasty": "otoplasty",
+    "Liposuction": "liposuction",
+    "Fat Grafting": "liposuction",
+    "Tummy Tuck": "abdominoplasty",
+    "Female Breast Reduction": "gynecomastiatreatment",
+    "Hair Transplant": "hair-transplant",
+    "Gynecomastia": "gynecomastiatreatment",
+    "Botulinum Therapy & Fillers": "miscellaneous",
+    "Thread Lift": "miscellaneous",
+    "Microneedling": "miscellaneous",
+    "PRP Therapy": "miscellaneous",
+    "Chemical Peels": "miscellaneous",
+    "Cosmetology": "miscellaneous",
+    "MNRF Celina": "mnrf-celina",
+    "Tattoo Removal": "miscellaneous",
+    "Laser Hair Reduction": "laser-hair-reduction",
+    "HIFU": null,
+    "Medifacial": "miscellaneous",
+    "Gynecology": "cosmetic-gynecology",
+    "Infertility Counselling": null,
+    "Weight Loss Programs": null,
+  };
+
   const cards: {
     title: string;
     description?: string;
@@ -218,21 +248,19 @@ export default function Home() {
   ];
 
   return (
-    <>
+    <div className="overflow-hidden">
       {/* Splash Screen */}
       {showSplash && (
         <div className="fixed inset-0 z-[9999] bg-[#F5F7F8] flex items-center justify-center">
           <div className="splash-logo flex items-center gap-6 scale-[]">
-            <img 
-              src="/logos/logoSymbol.png" 
-              alt="Roop Clinic Logo" 
-              className="h-[80px] w-auto object-contain brightness-75"
-            />
-            <img 
-              src="/logos/logoText.png" 
-              alt="Roop Clinic" 
-              className="h-[40px] w-auto object-contain brightness-75"
-            />
+            <Image 
+                src="/logos/new_logo.png" 
+                alt="Roop Clinic Logo" 
+                width={580} 
+                height={500}
+                className="object-contain sm:w-[580px] sm:h-[500px]"
+             />
+           
           </div>
         </div>
       )}
@@ -240,7 +268,7 @@ export default function Home() {
       <div ref={contentRef} className="flex flex-col gap-20 pb-16" style={{ opacity: showSplash ? 0 : 1 }}>
         {/* Hero */}
         <section ref={heroRef} className="rounded-2xl overflow-hidden relative">
-          <div className="relative h-[280px] sm:h-[340px] md:h-[420px] w-full">
+          <div className="relative h-[380px] sm:h-[440px] md:h-[520px] w-full">
             {/* Background image */}
             <div
               className="absolute inset-0 bg-cover bg-center"
@@ -258,19 +286,24 @@ export default function Home() {
             <div className="absolute inset-0 p-4 sm:p-6 md:p-10 flex items-center justify-between">
               {/* Left content */}
               <div className="flex flex-col gap-3 sm:gap-5 max-w-[900px] z-10">
-                <h1
-                  className="text-[24px] sm:text-[32px] md:text-[48px] text-white leading-tight"
-                  dangerouslySetInnerHTML={{
-                    __html: t
-                      .raw("hero.title")
-                      .replace(
-                        "<highlight>",
-                        '<span class="text-[#F6DE84] font-bold">'
-                      )
-                      .replace("</highlight>", "</span>"),
-                  }}
-                />
-                <p className="text-white/90 text-[14px] sm:text-[18px] md:text-[24px] max-w-[700px]">
+                <div>
+                  <h1
+                    className="text-[24px] sm:text-[32px] md:text-[48px] text-white text-center md:text-left leading-tight"
+                    dangerouslySetInnerHTML={{
+                      __html: t
+                        .raw("hero.title")
+                        .replace(
+                          "<highlight>",
+                          '<span class="text-[#F6DE84] font-bold">'
+                        )
+                        .replace("</highlight>", "</span>",),
+                    }}
+                  />
+                  <p className="text-white/80 text-[20px] font-semibold sm:text-[24px] md:text-[32px] mt-2 text-center md:text-left">
+                    {t("hero.subtitle")}
+                  </p>
+                </div>
+                <p className="text-white/90 text-[14px] sm:text-[18px] md:text-[24px] max-w-[700px] text-center md:text-left ">
                   {t("hero.description")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
@@ -352,13 +385,31 @@ export default function Home() {
           <div className="w-full">
             <h3 className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold mb-4 sm:mb-6 text-[#0074B7]">Surgical Procedures</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
-              <ServiceCard title="Rhinoplasty" description="Nose reshaping surgery" icon={{ src: "/icons/rhinoplasty.svg", alt: "Rhinoplasty" }} variant="centered" />
-              <ServiceCard title="Otoplasty" description="Ear reshaping procedure" icon={{ src: "/icons/otoplasty.svg", alt: "Otoplasty" }} variant="centered" />
-              <ServiceCard title="Liposuction" description="Fat removal surgery" icon={{ src: "/icons/liposuction.svg", alt: "Liposuction" }} variant="centered" />
-              <ServiceCard title="Fat Grafting" description="Natural body contouring" icon={{ src: "/icons/fatgrafting.svg", alt: "Fat Grafting" }} variant="centered" />
-              <ServiceCard title="Tummy Tuck" description="Abdominal contouring" icon={{ src: "/icons/tummytuck.svg", alt: "Tummy Tuck" }} variant="centered" />
-              <ServiceCard title="Gynecomastia" description="Male breast reduction" icon={{ src: "/icons/gynecomastia.svg", alt: "Gynecomastia" }} variant="centered" />
-              <ServiceCard title="Hair Transplant" description="Natural hair restoration" icon={{ src: "/icons/hairtransplant.svg", alt: "Hair Transplant" }} variant="centered" />
+              <Link href={`/${locale}/services/rhinoplasty`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Rhinoplasty" description="Nose reshaping surgery" icon={{ src: "/icons/rhinoplasty.svg", alt: "Rhinoplasty" }} variant="centered" />
+              </Link>
+               <Link href={`/${locale}/services/gynecomastiatreatment`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Gynecomastia" description="Male breast reduction" icon={{ src: "/icons/gyno.png", alt: "Gynecomastia" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/services/otoplasty`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Otoplasty" description="Ear reshaping procedure" icon={{ src: "/icons/otoplasty.svg", alt: "Otoplasty" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/services/liposuction`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Liposuction" description="Fat removal surgery" icon={{ src: "/icons/liposuction.svg", alt: "Liposuction" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/services/liposuction`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Fat Grafting" description="Natural body contouring" icon={{ src: "/icons/fatgrafting.svg", alt: "Fat Grafting" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/services/abdominoplasty`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Tummy Tuck" description="Abdominal contouring" icon={{ src: "/icons/tummytuck.svg", alt: "Tummy Tuck" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/services/gynecomastiatreatment`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Female Breast Reduction" description="Female breast reduction" icon={{ src: "/icons/gynecomastia.svg", alt: "Female Breast Reduction" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/services/hair-transplant`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Hair Transplant" description="Natural hair restoration" icon={{ src: "/icons/hairtransplant.svg", alt: "Hair Transplant" }} variant="centered" />
+              </Link>
+             
             </div>
           </div>
 
@@ -366,13 +417,26 @@ export default function Home() {
           <div className="w-full">
             <h3 className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold mb-4 sm:mb-6 text-[#0074B7]">Non-Surgical Treatments</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
-              <ServiceCard title="Botox & Fillers" description="Injectable treatments" icon={{ src: "/icons/face.svg", alt: "Botox" }} variant="centered" />
-              <ServiceCard title="Thread Lift" description="Non-surgical face lift" icon={{ src: "/icons/face.svg", alt: "Thread Lift" }} variant="centered" />
-              <ServiceCard title="Face Rejuvenation" description="Comprehensive facial care" icon={{ src: "/icons/face.svg", alt: "Face Rejuvenation" }} variant="centered" />
-              <ServiceCard title="Microneedling" description="Collagen induction therapy" icon={{ src: "/icons/microneedling.svg", alt: "Microneedling" }} variant="centered" />
-              <ServiceCard title="PRP Therapy" description="Platelet-rich plasma" icon={{ src: "/icons/prp.svg", alt: "PRP" }} variant="centered" />
-              <ServiceCard title="Chemical Peels" description="Skin rejuvenation" icon={{ src: "/icons/peels.svg", alt: "Peels" }} variant="centered" />
-              <ServiceCard title="Cosmetology" description="Advanced cosmetic care" icon={{ src: "/icons/cosmetology.svg", alt: "Cosmetology" }} variant="centered" />
+               <Link href={`/${locale}/services/miscellaneous`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Cosmetology" description="Advanced cosmetic care" icon={{ src: "/icons/cosmetology.svg", alt: "Cosmetology" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/services/miscellaneous`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Botulinum Therapy & Fillers" description="Injectable treatments" icon={{ src: "/icons/face.svg", alt: "Botulinum Toxin Therapy" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/services/miscellaneous`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Thread Lift" description="Non-surgical face lift" icon={{ src: "/icons/face.svg", alt: "Thread Lift" }} variant="centered" />
+              </Link>
+              {/* <ServiceCard title="Face Rejuvenation" description="Comprehensive facial care" icon={{ src: "/icons/face.svg", alt: "Face Rejuvenation" }} variant="centered" /> */}
+              <Link href={`/${locale}/services/mnrf-celina`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Microneedling" description="Collagen induction therapy" icon={{ src: "/icons/microneedling.svg", alt: "Microneedling" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/services/miscellaneous`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="PRP Therapy" description="Platelet-rich plasma" icon={{ src: "/icons/prp.svg", alt: "PRP" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/services/miscellaneous`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Chemical Peels" description="Skin rejuvenation" icon={{ src: "/icons/peels.svg", alt: "Peels" }} variant="centered" />
+              </Link>
+             
             </div>
           </div>
 
@@ -380,11 +444,19 @@ export default function Home() {
           <div className="w-full">
             <h3 className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold mb-4 sm:mb-6 text-[#0074B7]">Laser Treatments</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full">
-              <ServiceCard title="MNRF Celina" description="Micro-needling RF" icon={{ src: "/icons/mnrfcelina.svg", alt: "MNRF" }} variant="centered" />
-              <ServiceCard title="Tattoo Removal" description="Laser tattoo removal" icon={{ src: "/icons/tattooremoval.svg", alt: "Tattoo Removal" }} variant="centered" />
-              <ServiceCard title="Laser Hair Reduction" description="Permanent hair removal" icon={{ src: "/icons/laserhairreduction.svg", alt: "Laser Hair" }} variant="centered" />
+              <Link href={`/${locale}/services/mnrf-celina`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="MNRF Celina" description="Micro-needling RF" icon={{ src: "/icons/mnrfcelina.svg", alt: "MNRF" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/services/miscellaneous`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Tattoo Removal" description="Laser tattoo removal" icon={{ src: "/icons/tattooremoval.svg", alt: "Tattoo Removal" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/services/laser-hair-reduction`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Laser Hair Reduction" description="definitive hair removal" icon={{ src: "/icons/laserhairreduction.svg", alt: "Laser Hair" }} variant="centered" />
+              </Link>
               <ServiceCard title="HIFU" description="Ultrasound skin tightening" icon={{ src: "/icons/hifu.svg", alt: "HIFU" }} variant="centered" />
-              <ServiceCard title="Hydrafacial" description="Deep cleansing treatment" icon={{ src: "/icons/face.svg", alt: "Hydrafacial" }} variant="centered" />
+              <Link href={`/${locale}/services/miscellaneous`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Medifacial" description="Deep cleansing treatment" icon={{ src: "/icons/face.svg", alt: "Medifacial" }} variant="centered" />
+              </Link>
             </div>
           </div>
 
@@ -392,8 +464,12 @@ export default function Home() {
           <div className="w-full">
             <h3 className="text-[24px] sm:text-[28px] md:text-[32px] font-semibold mb-4 sm:mb-6 text-[#0074B7]">Specialized Care</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-              <ServiceCard title="Gynecology" description="Women's health services" icon={{ src: "/icons/gynecology.svg", alt: "Gynecology" }} variant="centered" />
-              <ServiceCard title="Infertility Counselling" description="Expert guidance" icon={{ src: "/icons/infertilitycounselling.svg", alt: "Infertility" }} variant="centered" />
+              <Link href={`/${locale}/services/cosmetic-gynecology`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Gynecology" description="Women's health services" icon={{ src: "/icons/gynecology.svg", alt: "Gynecology" }} variant="centered" />
+              </Link>
+              <Link href={`/${locale}/Infertility-Counselling`} className="hover:scale-105 transition-transform">
+                <ServiceCard title="Infertility Counselling" description="Expert guidance" icon={{ src: "/icons/infertilitycounselling.svg", alt: "Infertility" }} variant="centered" />
+              </Link>
               <ServiceCard title="Weight Loss Programs" description="Comprehensive management" icon={{ src: "/icons/weightloss.svg", alt: "Weight Loss" }} variant="centered" />
             </div>
           </div>
@@ -491,6 +567,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

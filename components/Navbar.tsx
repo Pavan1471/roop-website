@@ -22,6 +22,7 @@ export default function Navbar() {
     { href: `/${currentLocale}/doctors`, label: t("doctors") },
     { href: `/${currentLocale}/gallery`, label: t("gallery") },
     { href: `/${currentLocale}/contact`, label: t("contact") },
+    { href: `/${currentLocale}/Infertility-Counselling`, label: t("Infertility-Counselling") },
   ];
   
   const toggleLanguage = () => {
@@ -64,19 +65,12 @@ export default function Navbar() {
       <div className="flex items-center justify-between h-[48px] sm:h-[54px]">
         {/* Logo with symbol and text - clickable to home */}
         <Link href={`/${currentLocale}`} className="flex items-center gap-1.5 sm:gap-2 hover:opacity-80 transition-opacity">
-          <Image 
-            src="/logos/logoSymbol.png" 
+         <Image 
+            src="/logos/new_logo.png" 
             alt="Roop Clinic Logo" 
-            width={36} 
-            height={45}
-            className="object-contain brightness-30 sm:w-[43px] sm:h-[54px]"
-          />
-          <Image 
-            src="/logos/logoText.png" 
-            alt="Roop Clinic" 
-            width={78} 
-            height={21}
-            className="object-contain brightness-30 sm:w-[93px] sm:h-[25px]"
+            width={200} 
+            height={200}
+            className="object-contain brightness-30 sm:w-[220px] sm:h-[200px]"
           />
         </Link>
 
