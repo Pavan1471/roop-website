@@ -4,6 +4,7 @@ import ServiceCard from "@/components/ServiceCard";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslations } from "next-intl";
+import { Instagram, Facebook } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
@@ -185,6 +186,26 @@ export default function DoctorsPage() {
                   <div className="text-[20px] sm:text-[24px] leading-normal">
                     <p className="mb-3">{t("drRaunak.intro1")}</p>
                     <p>{t("drRaunak.intro2")}</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <a
+                      href="https://www.instagram.com/drraunakplasticsurgery"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 bg-white px-4 py-2 rounded-full hover:bg-[#0074b7] hover:text-white transition-colors shadow-sm"
+                    >
+                      <Instagram className="w-5 h-5" />
+                      <span className="font-medium">Instagram</span>
+                    </a>
+                    <a
+                      href="https://www.facebook.com/share/1C8xVSCB7b/?mibextid=wwXIfr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 bg-white px-4 py-2 rounded-full hover:bg-[#0074b7] hover:text-white transition-colors shadow-sm"
+                    >
+                      <Facebook className="w-5 h-5" />
+                      <span className="font-medium">Facebook</span>
+                    </a>
                   </div>
                 </div>
               </section>
