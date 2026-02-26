@@ -5,6 +5,7 @@ import { getMessages } from "next-intl/server";
 import "../globals.css";
 import Navbar from "../../components/Navbar";
 import Link from "next/link";
+import { Instagram, Facebook, MapPin } from "lucide-react";
 
 // Project fonts to match Figma
 const openSans = Open_Sans({
@@ -116,11 +117,29 @@ export default async function RootLayout({
                     <span className="font-semibold">Roop plastic surgery clinique and infertility counselling centre:</span>{" "}
                     {messages.Footer?.contactUs?.address1 ||
                       "No 3 Phulwani Plaza, 286 Mahashweta Nagar, Opposite Iskcon temple, Ujjain, MP, INDIA - 456010"}
+                    <a 
+                      href="https://maps.app.goo.gl/qgV8QErZRxQLL2DXA?g_st=iw"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-flex items-center gap-1 text-[#0074B7] hover:underline text-[14px] sm:text-[16px]"
+                    >
+                      <MapPin className="w-4 h-4" />
+                      View on Map
+                    </a>
                   </li>
                   <li>
                     <span className="font-semibold">Shinde Nursing and Maternity Home:</span>{" "}
                     {messages.Footer?.contactUs?.address2 ||
                       "48 Subhash Nagar, Opposite do talaab, Indore Road, Ujjain, MP, 456010"}
+                    <a 
+                      href="https://maps.app.goo.gl/2mSpVSdqWsevRX7k6?g_st=iw"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 inline-flex items-center gap-1 text-[#0074B7] hover:underline text-[14px] sm:text-[16px]"
+                    >
+                      <MapPin className="w-4 h-4" />
+                      View on Map
+                    </a>
                   </li>
                   <li>
                     {messages.Footer?.contactUs?.phone ||
@@ -130,9 +149,25 @@ export default async function RootLayout({
                     {messages.Footer?.contactUs?.email ||
                       "roopclinique3@gmail.com"}
                   </li>
-                  <li>
-                    {messages.Footer?.contactUs?.instagram ||
-                      "@roop_cosmetic_surgery_clinic"}
+                  <li className="flex items-center gap-4 pt-2">
+                    <a 
+                      href="https://www.instagram.com/roop_cosmetic_surgery_clinique"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 hover:text-[#0074B7] transition-colors"
+                    >
+                      <Instagram className="w-6 h-6" />
+                      <span>Instagram</span>
+                    </a>
+                    <a 
+                      href="https://www.facebook.com/people/Roop-Clinique-Ujjain/61572794702246/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 hover:text-[#0074B7] transition-colors"
+                    >
+                      <Facebook className="w-6 h-6" />
+                      <span>Facebook</span>
+                    </a>
                   </li>
                 </ul>
               </div>

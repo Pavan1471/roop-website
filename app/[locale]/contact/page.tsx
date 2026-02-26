@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Instagram, ChevronRight, ChevronLeft } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Facebook, ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -237,15 +237,43 @@ export default function ContactPage() {
                         {t("stayInTouch.email")}
                       </p>
                     </div>
-                    <div className="flex gap-4 md:gap-6 items-center">
+                    <a 
+                      href="https://www.instagram.com/roop_cosmetic_surgery_clinique" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex gap-4 md:gap-6 items-center hover:opacity-80 transition-opacity"
+                    >
                       <div className="bg-[#f6de84] rounded-lg w-[40px] h-[40px] md:w-[48px] md:h-[48px] flex items-center justify-center flex-shrink-0">
                         <Instagram className="w-5 h-5 md:w-6 md:h-6 text-[#0c1119]" />
                       </div>
                       <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] text-[#0c1119]">
                         {t("stayInTouch.instagram")}
                       </p>
-                    </div>
+                    </a>
+                    <a 
+                      href="https://www.facebook.com/people/Roop-Clinique-Ujjain/61572794702246/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex gap-4 md:gap-6 items-center hover:opacity-80 transition-opacity"
+                    >
+                      <div className="bg-[#f6de84] rounded-lg w-[40px] h-[40px] md:w-[48px] md:h-[48px] flex items-center justify-center flex-shrink-0">
+                        <Facebook className="w-5 h-5 md:w-6 md:h-6 text-[#0c1119]" />
+                      </div>
+                      <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] text-[#0c1119]">
+                        {t("stayInTouch.facebook")}
+                      </p>
+                    </a>
                   </div>
+                  <a 
+                    href="https://maps.app.goo.gl/qgV8QErZRxQLL2DXA?g_st=iw" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-2 bg-[#0074B7] hover:bg-[#005a8f] text-white px-6 py-3 rounded-lg transition-colors text-[16px] sm:text-[18px] md:text-[20px] font-semibold"
+                  >
+                    <MapPin className="w-5 h-5" />
+                    {t("stayInTouch.viewOnMap")}
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
             </CarouselItem>
@@ -302,15 +330,43 @@ export default function ContactPage() {
                         {t("stayInTouch.email")}
                       </p>
                     </div>
-                    <div className="flex gap-4 md:gap-6 items-center">
+                    <a 
+                      href="https://www.instagram.com/roop_cosmetic_surgery_clinique" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex gap-4 md:gap-6 items-center hover:opacity-80 transition-opacity"
+                    >
                       <div className="bg-[#f6de84] rounded-lg w-[40px] h-[40px] md:w-[48px] md:h-[48px] flex items-center justify-center flex-shrink-0">
                         <Instagram className="w-5 h-5 md:w-6 md:h-6 text-[#0c1119]" />
                       </div>
                       <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] text-[#0c1119]">
                         {t("stayInTouch.instagram")}
                       </p>
-                    </div>
+                    </a>
+                    <a 
+                      href="https://www.facebook.com/people/Roop-Clinique-Ujjain/61572794702246/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex gap-4 md:gap-6 items-center hover:opacity-80 transition-opacity"
+                    >
+                      <div className="bg-[#f6de84] rounded-lg w-[40px] h-[40px] md:w-[48px] md:h-[48px] flex items-center justify-center flex-shrink-0">
+                        <Facebook className="w-5 h-5 md:w-6 md:h-6 text-[#0c1119]" />
+                      </div>
+                      <p className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] text-[#0c1119]">
+                        {t("stayInTouch.facebook")}
+                      </p>
+                    </a>
                   </div>
+                  <a 
+                    href="https://maps.app.goo.gl/2mSpVSdqWsevRX7k6?g_st=iw" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-2 bg-[#0074B7] hover:bg-[#005a8f] text-white px-6 py-3 rounded-lg transition-colors text-[16px] sm:text-[18px] md:text-[20px] font-semibold"
+                  >
+                    <MapPin className="w-5 h-5" />
+                    {t("stayInTouch.viewOnMap")}
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
             </CarouselItem>
