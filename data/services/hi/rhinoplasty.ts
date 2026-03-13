@@ -106,8 +106,8 @@ const rhinoplasty: PageData = {
     },
   ],
 
-  beforeAfterImage: '/service/nose1.webp',
-  secondImage: '/service/nose2.webp',
+   beforeAfterImage: '/service/rhino1.png',
+  secondImage: '/service/rhino2.png',
   contentSource: 'Indian Association Of Aesthetic Plastic Surgeons', 
 };
 

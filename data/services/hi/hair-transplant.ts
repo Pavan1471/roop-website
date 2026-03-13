@@ -121,8 +121,8 @@ const hairTransplant: PageData = {
     },
   ],
 
-  beforeAfterImage: '/service/Hair Transplantation  What to Expect.jpg',
-  secondImage: '/service/hair1.webp',
+  beforeAfterImage: '/service/hair1.png',
+  secondImage: '/service/hair2.png',
   contentSource: 'Indian Association Of Aesthetic Plastic Surgeons', 
 };
 
